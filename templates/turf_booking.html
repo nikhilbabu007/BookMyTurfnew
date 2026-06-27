@@ -1,0 +1,306 @@
+<!DOCTYPE HTML>
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="UTF-8">
+  <title>BookMyTurf | Turf Booking</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap + Google Fonts -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Flatpickr -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+  <style>
+    /* 🌿 Global Styling */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+        url("{% static 'images1/bkturf.jpg' %}") center/cover no-repeat fixed;
+      color: #fff;
+      margin: 0;
+      min-height: 100vh;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 40px;
+      font-weight: 600;
+      color: #4CAF50;
+      letter-spacing: 0.5px;
+    }
+
+    /* 🌱 Card Container */
+    .booking-card {
+      background: rgba(255, 255, 255, 0.98);
+      color: #333;
+      border-radius: 25px;
+      padding: 50px 45px;
+      max-width: 880px;
+      margin: 50px auto;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(10px);
+      transition: 0.3s;
+    }
+
+    .booking-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Turf Name Header */
+    .turf-header {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .turf-header h3 {
+      font-weight: 600;
+      font-size: 1.8rem;
+      color: #4CAF50;
+    }
+
+    .turf-header p {
+      color: #666;
+      font-size: 15px;
+      margin-top: 5px;
+    }
+
+    /* Inputs */
+    label {
+      font-weight: 500;
+      color: #222;
+      margin-bottom: 6px;
+    }
+
+    input, select {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid #ccc;
+      padding: 12px 14px;
+      font-size: 15px;
+      background-color: #f9f9f9;
+      transition: 0.2s;
+    }
+
+    input:focus, select:focus {
+      border-color: #4CAF50;
+      box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.15);
+      outline: none;
+      background-color: #fff;
+    }
+
+    /* Calendar styling */
+    #calendar {
+      border-radius: 12px;
+      border: 1px solid #ccc;
+      background: #f9f9f9;
+      transition: 0.3s;
+    }
+
+    #calendar:focus {
+      border-color: #4CAF50;
+    }
+
+    /* Slots */
+    .slot-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .slot {
+      background: #f1f8e9;
+      color: #333;
+      padding: 12px 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+      border: 1px solid transparent;
+      font-weight: 500;
+    }
+
+    .slot:hover {
+      border-color: #4CAF50;
+      background: #e8f5e9;
+    }
+
+    .slot.selected {
+      background: #4CAF50;
+      color: white;
+    }
+
+    .slot.disabled {
+      background: #ccc;
+      color: #666;
+      pointer-events: none;
+    }
+
+    /* Confirm Button */
+    .btn-submit {
+      background: linear-gradient(135deg, #4CAF50, #43A047);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 14px 40px;
+      font-size: 16px;
+      font-weight: 500;
+      transition: 0.3s;
+      box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+    }
+
+    .btn-submit:hover {
+      background: linear-gradient(135deg, #43A047, #388E3C);
+      transform: translateY(-2px);
+    }
+
+    .back-link {
+      color: #4CAF50;
+      text-decoration: none;
+      font-weight: 500;
+      margin-left: 20px;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Hide slots initially */
+    #slot-section {
+      display: none;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(10px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    /* Flatpickr Customization */
+    .flatpickr-calendar {
+      font-family: 'Poppins', sans-serif;
+      border-radius: 15px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .flatpickr-day.selected, .flatpickr-day.today {
+      background-color: #4CAF50 !important;
+      color: white !important;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <a href="javascript:void(0)" onclick="history.back()" class="back-link">&laquo; Back to Details</a>
+
+  <h1>Book Your Turf</h1>
+
+  <div class="booking-card">
+    <div class="turf-header">
+      <h3>{{ turf.name }}</h3>
+      <p>{{ turf.location }}</p>
+    </div>
+
+    <form method="post">
+      {% csrf_token %}
+      <div class="row g-4">
+        <div class="col-md-6">
+          <label>Your Name</label>
+          <input type="text" name="name" value="{{ user.name }}" readonly>
+        </div>
+
+        <div class="col-md-6">
+          <label>Email</label>
+          <input type="email" name="email" value="{{ user.email }}" readonly>
+        </div>
+
+        <div class="col-md-6">
+          <label>Phone Number</label>
+          <input type="text" name="phone" value="{{ user.phno }}" readonly>
+        </div>
+
+        <div class="col-md-6">
+          <label>Turf Location</label>
+          <input type="text" value="{{ turf.location }}" readonly>
+        </div>
+      </div>
+
+      <hr class="my-4">
+
+      <!-- Calendar -->
+      <h5 class="text-center text-success mb-3">Select a Date</h5>
+      <div class="d-flex justify-content-center">
+        <input id="calendar" name="selected_date" class="form-control w-50 text-center" placeholder="Choose a date" readonly>
+      </div>
+
+      <!-- Slot Section -->
+      <div id="slot-section" class="mt-5">
+        <h5 class="text-center text-success">Available Slots (in green)</h5>
+        <div id="slots" class="slot-container mb-4"></div>
+        <input type="hidden" name="selected_slots" id="selected_slots">
+
+        <div class="text-center">
+          <button type="submit" class="btn-submit" onclick="return confirm('Confirm your booking?')">Confirm Booking</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script>
+    const calendarInput = document.getElementById('calendar');
+    const slotsDiv = document.getElementById('slots');
+    const slotSection = document.getElementById('slot-section');
+    let selectedSlots = [];
+
+    flatpickr(calendarInput, {
+      minDate: "today",
+      maxDate: new Date().fp_incr(28),
+      dateFormat: "Y-m-d",
+      onChange: function(selectedDates, dateStr) {
+        if (dateStr) {
+          slotSection.style.display = 'block';
+          loadSlots(dateStr);
+          selectedSlots = [];
+        } else {
+          slotSection.style.display = 'none';
+        }
+      }
+    });
+
+    function loadSlots(date) {
+      fetch(`/get_slots/{{ turf.id }}/?date=${date}`)
+        .then(response => response.json())
+        .then(data => {
+          slotsDiv.innerHTML = '';
+          data.slots.forEach(slot => {
+            const div = document.createElement('div');
+            div.classList.add('slot');
+            div.textContent = slot.time;
+            if (slot.booked) div.classList.add('disabled');
+            div.onclick = () => toggleSlot(div);
+            slotsDiv.appendChild(div);
+          });
+        });
+    }
+
+    function toggleSlot(elem) {
+      const slotTime = elem.textContent;
+      if (elem.classList.contains('selected')) {
+        elem.classList.remove('selected');
+        selectedSlots = selectedSlots.filter(s => s !== slotTime);
+      } else {
+        elem.classList.add('selected');
+        selectedSlots.push(slotTime);
+      }
+      document.getElementById('selected_slots').value = JSON.stringify(selectedSlots);
+    }
+  </script>
+</body>
+</html>

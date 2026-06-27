@@ -1,0 +1,777 @@
+
+<!DOCTYPE HTML>
+<html>
+{% load static %}
+<head>
+	<link rel="shortcut icon" href="{% static 'images1/logo-black-and-white.png' %}" type="">
+<title>BookMyTurf</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Gretong Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Bootstrap Core CSS -->
+<link href="{% static 'dashboard/css/bootstrap.min.css' %}" rel='stylesheet' type='text/css' />
+<!-- Custom CSS -->
+<link href="{% static 'dashboard/css/style2.css' %} " rel='stylesheet' type='text/css' />
+<!-- Graph CSS -->
+<link href="{% static 'dashboard/css/font-awesome.css' %} " rel="stylesheet">
+<!-- jQuery -->
+<link href='//fonts.googleapis.com/css?family=Roboto:700,500,300,100italic,100,400' rel='stylesheet' type='text/css'/>
+<link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<!-- lined-icons -->
+<link rel="stylesheet" href="css/icon-font.min.css" type='text/css' />
+<script src="{% static 'dashboard/js/amcharts.js' %} "></script>
+<script src="{% static 'dashboard/js/serial.js' %} "></script>
+<script src="{% static 'dashboard/js/light.js' %} "></script>
+<!-- //lined-icons -->
+<script src="{% static 'dashboard/js/jquery-1.10.2.min.j' %} s"></script>
+   <!--pie-chart--->
+<script src="{% static 'dashboard/js/pie-chart.js' %} " type="text/javascript"></script>
+ <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#demo-pie-1').pieChart({
+                barColor: '#3bb2d0',
+                trackColor: '#eee',
+                lineCap: 'round',
+                lineWidth: 8,
+                onStep: function (from, to, percent) {
+                    $(this.element).find('.pie-value').text(Math.round(percent) + '%');
+                }
+            });
+
+            $('#demo-pie-2').pieChart({
+                barColor: '#fbb03b',
+                trackColor: '#eee',
+                lineCap: 'butt',
+                lineWidth: 8,
+                onStep: function (from, to, percent) {
+                    $(this.element).find('.pie-value').text(Math.round(percent) + '%');
+                }
+            });
+
+            $('#demo-pie-3').pieChart({
+                barColor: '#ed6498',
+                trackColor: '#eee',
+                lineCap: 'square',
+                lineWidth: 8,
+                onStep: function (from, to, percent) {
+                    $(this.element).find('.pie-value').text(Math.round(percent) + '%');
+                }
+            });
+
+
+        });
+
+    </script>
+	<style>
+		.card-container {
+
+    flex-wrap: wrap;
+}
+.card {
+    flex: 1 0 calc(33.33% - 20px); /* Adjust the width as needed, considering margins and padding */
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 10px;
+    box-sizing: border-box;
+}
+
+
+									</style>
+</head>
+<body>
+   <div class="page-container">
+   <!--/content-inner-->
+	<div class="left-content">
+	   <div class="inner-content">
+		<!-- header-starts -->
+			<div class="header-section">
+			<!-- top_bg -->
+						<div class="top_bg">
+
+								<div class="header_top">
+									<div class="top_right">
+										<ul>
+											<li></li>
+											<li></li>
+											<li></li>
+										</ul>
+									</div>
+									<div class="top_left">
+
+									</div>
+										<div class="clearfix"> </div>
+								</div>
+
+						</div>
+					<div class="clearfix"></div>
+				<!-- /top_bg -->
+				</div>
+				<div class="header_bg">
+
+							<div class="header">
+								<div class="head-t">
+									<div class="logo">
+										<a href="index.html"><img src="images/logo.png" class="img-responsive" alt=""> </a>
+									</div>
+
+
+
+
+                <h3><center><b>Turf Profile</b></center></h3>
+
+                      <br><br><br><br>
+
+                                    {% for i in r %}
+                    <div class="container" >
+						<div class="card-container">
+                      <div class="card-group" style="width:300px;float:left" >
+							 <div class="card">
+                        <img class="card-img-top" src="{{ i.photo.url }}" alt="Card image" style="width:200px">
+                        <div class="card-body" >
+                          <a class="card-title" style="color:red">{{i.name}}</a>
+                            <h6 >{{i.time}}</h6>
+                          <p class="card-text"></p>
+                          <a href="medlab/{{i.name}}" class="btn btn-info">details</a>
+                        </div>
+                      </div>
+                    </div>
+                   {% endfor %}
+
+										   </div>
+									</div>
+
+
+					<link rel="stylesheet" href="css/graph.css">
+				<!--//graph-->
+							<script src="js/jquery.flot.js"></script>
+									<script>
+									$(document).ready(function () {
+
+										// Graph Data ##############################################
+										var graphData = [{
+												// Visits
+												data: [ [6, 1300], [7, 1600], [8, 1900], [9, 2100], [10, 2500], [11, 2200], [12, 2000], [13, 1950], [14, 1900], [15, 2000] ],
+												color: '#999999'
+											}, {
+												// Returning Visits
+												data: [ [6, 500], [7, 600], [8, 550], [9, 600], [10, 800], [11, 900], [12, 800], [13, 850], [14, 830], [15, 1000] ],
+												color: '#999999',
+												points: { radius: 4, fillColor: '#7f8c8d' }
+											}
+										];
+
+										// Lines Graph #############################################
+										$.plot($('#graph-lines'), graphData, {
+											series: {
+												points: {
+													show: true,
+													radius: 5
+												},
+												lines: {
+													show: true
+												},
+												shadowSize: 0
+											},
+											grid: {
+												color: '#7f8c8d',
+												borderColor: 'transparent',
+												borderWidth: 20,
+												hoverable: true
+											},
+											xaxis: {
+												tickColor: 'transparent',
+												tickDecimals: 2
+											},
+											yaxis: {
+												tickSize: 1000
+											}
+										});
+
+										// Bars Graph ##############################################
+										$.plot($('#graph-bars'), graphData, {
+											series: {
+												bars: {
+													show: true,
+													barWidth: .9,
+													align: 'center'
+												},
+												shadowSize: 0
+											},
+											grid: {
+												color: '#7f8c8d',
+												borderColor: 'transparent',
+												borderWidth: 20,
+												hoverable: true
+											},
+											xaxis: {
+												tickColor: 'transparent',
+												tickDecimals: 2
+											},
+											yaxis: {
+												tickSize: 1000
+											}
+										});
+
+										// Graph Toggle ############################################
+										$('#graph-bars').hide();
+
+										$('#lines').on('click', function (e) {
+											$('#bars').removeClass('active');
+											$('#graph-bars').fadeOut();
+											$(this).addClass('active');
+											$('#graph-lines').fadeIn();
+											e.preventDefault();
+										});
+
+										$('#bars').on('click', function (e) {
+											$('#lines').removeClass('active');
+											$('#graph-lines').fadeOut();
+											$(this).addClass('active');
+											$('#graph-bars').fadeIn().removeClass('hidden');
+											e.preventDefault();
+										});
+
+										// Tooltip #################################################
+										function showTooltip(x, y, contents) {
+											$('<div id="tooltip">' + contents + '</div>').css({
+												top: y - 16,
+												left: x + 20
+											}).appendTo('body').fadeIn();
+										}
+
+										var previousPoint = null;
+
+										$('#graph-lines, #graph-bars').bind('plothover', function (event, pos, item) {
+											if (item) {
+												if (previousPoint != item.dataIndex) {
+													previousPoint = item.dataIndex;
+													$('#tooltip').remove();
+													var x = item.datapoint[0],
+														y = item.datapoint[1];
+														showTooltip(item.pageX, item.pageY, y + ' visitors at ' + x + '.00h');
+												}
+											} else {
+												$('#tooltip').remove();
+												previousPoint = null;
+											}
+										});
+
+									});
+									</script>
+
+					<script>
+												var randomScalingFactor = function() {
+												return Math.round(Math.random() * 100 * (Math.random() > 0.5 ? -1 : 1));
+													};
+												var randomColor = function(opacity) {
+												return 'rgba(' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + (opacity || '.3') + ')';
+													};
+
+												var lineChartData = {
+													labels: ["January", "February", "March", "April", "May", "June", "July"],
+													datasets: [{
+														label: "My First dataset",
+														data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()],
+														yAxisID: "y-axis-1",
+														}, {
+																label: "My Second dataset",
+																data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()],
+																	yAxisID: "y-axis-2"
+																	}]
+																};
+
+																$.each(lineChartData.datasets, function(i, dataset) {
+																	dataset.borderColor = randomColor(0.4);
+																	dataset.backgroundColor = randomColor(1);
+																	dataset.pointBorderColor = randomColor(0.7);
+																	dataset.pointBackgroundColor = randomColor(0.5);
+																	dataset.pointBorderWidth = 1;
+																});
+
+																console.log(lineChartData);
+
+																window.onload = function() {
+																	var ctx = document.getElementById("canvas").getContext("2d");
+																	window.myLine = Chart.Line(ctx, {
+																		data: lineChartData,
+																		options: {
+
+																			hoverMode: 'label',
+																			stacked: false,
+																			scales: {
+																				xAxes: [{
+																					display: true,
+																					gridLines: {
+																						offsetGridLines: false
+																					}
+																				}],
+																				yAxes: [{
+																					type: "linear", // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+																					display: true,
+																					position: "left",
+																					id: "y-axis-1",
+																				}, {
+																					type: "linear", // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+																					display: true,
+																					position: "right",
+																					id: "y-axis-2",
+
+																					// grid line settings
+																					gridLines: {
+																						drawOnChartArea: false, // only want the grid lines for one axis to show up
+																					},
+																				}],
+																			}
+																		}
+																	});
+																};
+
+																$('#randomizeData').click(function() {
+																	lineChartData.datasets[0].data = [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()];
+
+																	lineChartData.datasets[1].data = [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()];
+
+																	window.myLine.update();
+																});
+										</script>
+											<script src="js/Chart.js"></script>
+									<script>
+											var chart = AmCharts.makeChart("chartdiv1", {
+																				  "type": "serial",
+																				  "theme": "light",
+																				  "rotate": true,
+																				  "marginBottom": 50,
+																				  "dataProvider": [{
+																					"age": "85+",
+																					"male": -0.1,
+																					"female": 0.3
+																				  }, {
+																					"age": "80-54",
+																					"male": -0.2,
+																					"female": 0.3
+																				  }, {
+																					"age": "75-79",
+																					"male": -0.3,
+																					"female": 0.6
+																				  }, {
+																					"age": "70-74",
+																					"male": -0.5,
+																					"female": 0.8
+																				  }, {
+																					"age": "65-69",
+																					"male": -0.8,
+																					"female": 1.0
+																				  }, {
+																					"age": "60-64",
+																					"male": -1.1,
+																					"female": 1.3
+																				  }, {
+																					"age": "55-59",
+																					"male": -1.7,
+																					"female": 1.9
+																				  }, {
+																					"age": "50-54",
+																					"male": -2.2,
+																					"female": 2.5
+																				  }, {
+																					"age": "45-49",
+																					"male": -2.8,
+																					"female": 3.0
+																				  }, {
+																					"age": "40-44",
+																					"male": -3.4,
+																					"female": 3.6
+																				  }, {
+																					"age": "35-39",
+																					"male": -4.2,
+																					"female": 4.1
+																				  }, {
+																					"age": "30-34",
+																					"male": -5.2,
+																					"female": 4.8
+																				  }, {
+																					"age": "25-29",
+																					"male": -5.6,
+																					"female": 5.1
+																				  }, {
+																					"age": "20-24",
+																					"male": -5.1,
+																					"female": 5.1
+																				  }, {
+																					"age": "15-19",
+																					"male": -3.8,
+																					"female": 3.8
+																				  }, {
+																					"age": "10-14",
+																					"male": -3.2,
+																					"female": 3.4
+																				  }, {
+																					"age": "5-9",
+																					"male": -4.4,
+																					"female": 4.1
+																				  }, {
+																					"age": "0-4",
+																					"male": -5.0,
+																					"female": 4.8
+																				  }],
+																				  "startDuration": 1,
+																				  "graphs": [{
+																					"fillAlphas": 0.8,
+																					"lineAlpha": 0.2,
+																					"type": "column",
+																					"valueField": "male",
+																					"title": "Male",
+																					"labelText": "[[value]]",
+																					"clustered": false,
+																					"labelFunction": function(item) {
+																					  return Math.abs(item.values.value);
+																					},
+																					"balloonFunction": function(item) {
+																					  return item.category + ": " + Math.abs(item.values.value) + "%";
+																					}
+																				  }, {
+																					"fillAlphas": 0.8,
+																					"lineAlpha": 0.2,
+																					"type": "column",
+																					"valueField": "female",
+																					"title": "Female",
+																					"labelText": "[[value]]",
+																					"clustered": false,
+																					"labelFunction": function(item) {
+																					  return Math.abs(item.values.value);
+																					},
+																					"balloonFunction": function(item) {
+																					  return item.category + ": " + Math.abs(item.values.value) + "%";
+																					}
+																				  }],
+																				  "categoryField": "age",
+																				  "categoryAxis": {
+																					"gridPosition": "start",
+																					"gridAlpha": 0.2,
+																					"axisAlpha": 0
+																				  },
+																				  "valueAxes": [{
+																					"gridAlpha": 0,
+																					"ignoreAxisWidth": true,
+																					"labelFunction": function(value) {
+																					  return Math.abs(value) + '%';
+																					},
+																					"guides": [{
+																					  "value": 0,
+																					  "lineAlpha": 0.2
+																					}]
+																				  }],
+																				  "balloon": {
+																					"fixedPosition": true
+																				  },
+																				  "chartCursor": {
+																					"valueBalloonsEnabled": false,
+																					"cursorAlpha": 0.05,
+																					"fullWidth": true
+																				  },
+																				  "allLabels": [{
+																					"text": "Male",
+																					"x": "28%",
+																					"y": "97%",
+																					"bold": true,
+																					"align": "middle"
+																				  }, {
+																					"text": "Female",
+																					"x": "75%",
+																					"y": "97%",
+																					"bold": true,
+																					"align": "middle"
+																				  }],
+																				 "export": {
+																					"enabled": true
+																				  }
+
+																				});
+									</script>
+
+		</div>
+</div>
+				<!--//content-inner-->
+			<!--/sidebar-menu-->
+				<div class="sidebar-menu">
+					<header class="logo1">
+<!--						<a href="#" class="sidebar-icon"> </a>-->
+					</header>
+						<div style="border-top:1px ridge rgba(255, 255, 255, 0.15)"></div>
+                           <div class="menu">
+									<ul id="menu" >
+										<li><a href="pro"><i class="fa fa-tachometer"></i> <span>Home</span></a></li>
+
+										 <li id="menu-academico" ><a href="userpro"><i class="fa fa-file-text-o"></i> <span>Profile</span></a></li>
+<!--									<li><a href="sweater.html"><i class="lnr lnr-pencil"></i> <span>Sweater</span></a></li>-->
+                                        <li id="menu-academico" ><a href="viewapp"><i class="fa fa-file-text-o"></i> <span>View Appointment</span></a></li>
+                                        <li id="menu-academico" ><a href="viewresult"><i class="fa fa-file-text-o"></i> <span>View Result</span></a></li>
+										<li id="menu-academico" ><a href="#"><i class="fa fa-file-text-o"></i> <span>Feedback</span> <span class="fa fa-angle-right" style="float: right"></span></a>
+										 <ul id="menu-academico-sub" >
+											<li id="menu-academico-avaliacoes" ><a href="comp">Send</a></li>
+											<li id="menu-academico-boletim" ><a href="usviewcomp">View </a></li>
+
+										  </ul>
+									 </li>
+
+<!--									<li id="menu-academico" ><a href="shoes.html"><i class="fa fa-file-text-o"></i> <span></span>Result</a></li>-->
+<!--									 <li><a href="bags.html"><i class="lnr lnr-envelope"></i> <span>Bags</span></a></li>-->
+<!--									<li><a href="products.html"><i class="lnr lnr-chart-bars"></i> <span>Watches</span></a></li>-->
+<!--							        <li id="menu-academico" ><a href="#"><i class="fa fa-file-text-o"></i> <span>Others</span> <span class="fa fa-angle-right" style="float: right"></span></a>-->
+<!--										 <ul id="menu-academico-sub" >-->
+<!--											<li id="menu-academico-avaliacoes" ><a href="labpayview">View Payment Completed</a></li>-->
+<!--											<li id="menu-academico-avaliacoes" ><a href="labviewcon">View Confirmed Booking</a></li>-->
+<!--											<li id="menu-academico-boletim" ><a href="paylab">View Payment</a></li>-->
+
+<!--										  </ul>-->
+<!--									 </li>-->
+										<li id="menu-academico" ><a href="logout"><i class="fa fa-file-text-o"></i> <span></span>Logout</a></li>
+
+								  </ul>
+								</div>
+							  </div>
+							  <div class="clearfix"></div>
+							</div>
+							<script>
+							var toggle = true;
+
+							$(".sidebar-icon").click(function() {
+							  if (toggle)
+							  {
+								$(".page-container").addClass("sidebar-collapsed").removeClass("sidebar-collapsed-back");
+								$("#menu span").css({"position":"absolute"});
+							  }
+							  else
+							  {
+								$(".page-container").removeClass("sidebar-collapsed").addClass("sidebar-collapsed-back");
+								setTimeout(function() {
+								  $("#menu span").css({"position":"relative"});
+								}, 400);
+							  }
+
+											toggle = !toggle;
+										});
+							</script>
+<!--js -->
+<script src="js/jquery.nicescroll.js"></script>
+<script src="js/scripts.js"></script>
+<!-- Bootstrap Core JavaScript -->
+   <script src="js/bootstrap.min.js"></script>
+   <!-- /Bootstrap Core JavaScript -->
+   <!-- real-time -->
+<script language="javascript" type="text/javascript" src="js/jquery.flot.js"></script>
+	<script type="text/javascript">
+
+	$(function() {
+
+		// We use an inline data source in the example, usually data would
+		// be fetched from a server
+
+		var data = [],
+			totalPoints = 300;
+
+		function getRandomData() {
+
+			if (data.length > 0)
+				data = data.slice(1);
+
+			// Do a random walk
+
+			while (data.length < totalPoints) {
+
+				var prev = data.length > 0 ? data[data.length - 1] : 50,
+					y = prev + Math.random() * 10 - 5;
+
+				if (y < 0) {
+					y = 0;
+				} else if (y > 100) {
+					y = 100;
+				}
+
+				data.push(y);
+			}
+
+			// Zip the generated y values with the x values
+
+			var res = [];
+			for (var i = 0; i < data.length; ++i) {
+				res.push([i, data[i]])
+			}
+
+			return res;
+		}
+
+		// Set up the control widget
+
+		var updateInterval = 30;
+		$("#updateInterval").val(updateInterval).change(function () {
+			var v = $(this).val();
+			if (v && !isNaN(+v)) {
+				updateInterval = +v;
+				if (updateInterval < 1) {
+					updateInterval = 1;
+				} else if (updateInterval > 2000) {
+					updateInterval = 2000;
+				}
+				$(this).val("" + updateInterval);
+			}
+		});
+
+		var plot = $.plot("#placeholder", [ getRandomData() ], {
+			series: {
+				shadowSize: 0	// Drawing is faster without shadows
+			},
+			yaxis: {
+				min: 0,
+				max: 100
+			},
+			xaxis: {
+				show: false
+			}
+		});
+
+		function update() {
+
+			plot.setData([getRandomData()]);
+
+			// Since the axes don't change, we don't need to call plot.setupGrid()
+
+			plot.draw();
+			setTimeout(update, updateInterval);
+		}
+
+		update();
+
+		// Add the Flot version string to the footer
+
+		$("#footer").prepend("Flot " + $.plot.version + " &ndash; ");
+	});
+
+	</script>
+<!-- /real-time -->
+<script src="js/jquery.fn.gantt.js"></script>
+    <script>
+
+		$(function() {
+
+			"use strict";
+
+			$(".gantt").gantt({
+				source: [{
+					name: "Sprint 0",
+					desc: "Analysis",
+					values: [{
+						from: "/Date(1320192000000)/",
+						to: "/Date(1322401600000)/",
+						label: "Requirement Gathering",
+						customClass: "ganttRed"
+					}]
+				},{
+					name: " ",
+					desc: "Scoping",
+					values: [{
+						from: "/Date(1322611200000)/",
+						to: "/Date(1323302400000)/",
+						label: "Scoping",
+						customClass: "ganttRed"
+					}]
+				},{
+					name: "Sprint 1",
+					desc: "Development",
+					values: [{
+						from: "/Date(1323802400000)/",
+						to: "/Date(1325685200000)/",
+						label: "Development",
+						customClass: "ganttGreen"
+					}]
+				},{
+					name: " ",
+					desc: "Showcasing",
+					values: [{
+						from: "/Date(1325685200000)/",
+						to: "/Date(1325695200000)/",
+						label: "Showcasing",
+						customClass: "ganttBlue"
+					}]
+				},{
+					name: "Sprint 2",
+					desc: "Development",
+					values: [{
+						from: "/Date(1326785200000)/",
+						to: "/Date(1325785200000)/",
+						label: "Development",
+						customClass: "ganttGreen"
+					}]
+				},{
+					name: " ",
+					desc: "Showcasing",
+					values: [{
+						from: "/Date(1328785200000)/",
+						to: "/Date(1328905200000)/",
+						label: "Showcasing",
+						customClass: "ganttBlue"
+					}]
+				},{
+					name: "Release Stage",
+					desc: "Training",
+					values: [{
+						from: "/Date(1330011200000)/",
+						to: "/Date(1336611200000)/",
+						label: "Training",
+						customClass: "ganttOrange"
+					}]
+				},{
+					name: " ",
+					desc: "Deployment",
+					values: [{
+						from: "/Date(1336611200000)/",
+						to: "/Date(1338711200000)/",
+						label: "Deployment",
+						customClass: "ganttOrange"
+					}]
+				},{
+					name: " ",
+					desc: "Warranty Period",
+					values: [{
+						from: "/Date(1336611200000)/",
+						to: "/Date(1349711200000)/",
+						label: "Warranty Period",
+						customClass: "ganttOrange"
+					}]
+				}],
+				navigate: "scroll",
+				scale: "weeks",
+				maxScale: "months",
+				minScale: "days",
+				itemsPerPage: 10,
+				onItemClick: function(data) {
+					alert("Item clicked - show some details");
+				},
+				onAddClick: function(dt, rowId) {
+					alert("Empty space clicked - add an item!");
+				},
+				onRender: function() {
+					if (window.console && typeof console.log === "function") {
+						console.log("chart rendered");
+					}
+				}
+			});
+
+			$(".gantt").popover({
+				selector: ".bar",
+				title: "I'm a popover",
+				content: "And I'm the content of said popover.",
+				trigger: "hover"
+			});
+
+			prettyPrint();
+
+		});
+
+    </script>
+		   <script src="js/menu_jquery.js"></script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'images1/logo-black-and-white.png' %}" type="image/png">
+    <title>Change Password | BookMyTurf</title>
+
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="{% static 'dashboard/css/font-awesome.css' %}" rel="stylesheet">
+
+    <style>
+        /* ===== Body & Background ===== */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background:
+                linear-gradient(rgba(0,60,0,0.75), rgba(0,0,0,0.85)),
+                url("{% static 'images1/207329881-generative-ai-grass-inside-the-football-stadium.jpg' %}") no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* ===== Back Button ===== */
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: #FFD700;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .back-btn:hover {
+            background: #FFA500;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(0,0,0,0.3);
+        }
+
+        /* ===== Glass Card ===== */
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: 40px 35px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        .card h1 {
+            color: #FFD700;
+            margin-bottom: 30px;
+            font-size: 2em;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        /* ===== Input Fields ===== */
+        .input-field {
+            width: 100%;
+            padding: 12px 15px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.15);
+            color: #fff;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .input-field::placeholder {
+            color: #ccc;
+        }
+
+        .input-field:focus {
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 0 8px #FFD700;
+        }
+
+        /* ===== Submit Button ===== */
+        .submit-btn {
+            background: #FFD700;
+            color: #000;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: bold;
+            margin-top: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        .submit-btn:hover {
+            background: #FFA500;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(0,0,0,0.3);
+        }
+
+        /* ===== Messages ===== */
+        .messages {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #FFD700;
+            font-weight: 500;
+        }
+
+        @media (max-width: 500px) {
+            .card {
+                padding: 30px 25px;
+            }
+            .card h1 {
+                font-size: 1.7em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Back Button -->
+    <a href="profile" class="back-btn"><i class="fa fa-arrow-left"></i> Back</a>
+
+    <!-- Glass Card -->
+    <div class="card">
+        <h1>Change Password</h1>
+        <form action="usrchp" method="POST">
+            {% csrf_token %}
+            <input type="text" name="n" placeholder="Username" class="input-field" required>
+            <input type="password" name="n1" placeholder="Old Password" class="input-field" required>
+            <input type="password" name="n2" placeholder="New Password" class="input-field" required>
+            <input type="submit" class="submit-btn" value="Change" onclick="return confirm('Are You Sure?')">
+        </form>
+
+        {% for i in messages %}
+            <div class="messages">{{ i }}</div>
+        {% endfor %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Update Owner | BookMyTurf</title>
+    <link rel="shortcut icon" href="{% static 'images1/logo-black-and-white.png' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        /* GLOBAL STYLES */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: url("{% static 'images1/footballturf5.jpg' %}") center/cover no-repeat fixed;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+        }
+
+        /* NAVBAR */
+        nav {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 15px;
+            padding: 12px 25px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 10;
+        }
+
+        nav .logo {
+            color: #FFD700;
+            font-size: 1.6em;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        nav a.back-btn {
+            text-decoration: none;
+            color: #fff;
+            background: #007bff;
+            padding: 6px 16px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: 0.3s;
+        }
+
+        nav a.back-btn:hover {
+            background: #0056b3;
+        }
+
+        /* FORM CONTAINER */
+        .update-container {
+            margin: 130px auto 60px auto;
+            width: 90%;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px 50px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            color: #fff;
+        }
+
+        .update-container h2 {
+            text-align: center;
+            font-size: 2em;
+            font-weight: 700;
+            color: #FFD700;
+            margin-bottom: 25px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.4);
+        }
+
+        /* FORM INPUTS */
+        form input[type="text"],
+        form input[type="email"],
+        form input[type="file"] {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 18px;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.15);
+            color: #fff;
+            font-size: 1em;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        form input::placeholder {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        form input:focus {
+            background: rgba(255,255,255,0.25);
+            box-shadow: 0 0 5px #FFD700;
+        }
+
+        /* UPDATE BUTTON */
+        .update-btn {
+            display: block;
+            width: 100%;
+            padding: 12px 0;
+            margin-top: 5px;
+            background: #FFD700;
+            color: #000;
+            border: none;
+            font-size: 1.1em;
+            font-weight: 700;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .update-btn:hover {
+            background: #FFA500;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(0,0,0,0.3);
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            color: #ccc;
+            font-size: 0.9em;
+            margin-top: 30px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            .update-container {
+                padding: 30px 25px;
+            }
+
+            .update-container h2 {
+                font-size: 1.7em;
+            }
+
+            .update-btn {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">
+            <i class="fa-solid fa-futbol"></i>
+            BookMyTurf
+        </div>
+        <a href="profile" class="back-btn"><i class="fa fa-arrow-left"></i> Back</a>
+    </nav>
+
+    <!-- UPDATE FORM -->
+    <div class="update-container">
+        <h2>Update Owner Details</h2>
+        <form action="upownr" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% for i in r %}
+            <input type="text" name="n4" value="{{i.username}}" hidden="">
+
+            <input placeholder="Owner Name" value="{{i.owner}}" name="n1" type="text" required>
+            <input placeholder="Email" value="{{i.owner_email}}" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" name="n2" type="email" required>
+            <input placeholder="Phone Number" value="{{i.owner_phno}}" pattern="[0-9]{10}" name="n3" type="text" required>
+
+            <label style="color:#FFD700; font-weight:600;">Owner Photo:</label>
+            <input type="file" name="n16">
+
+            {% endfor %}
+            <button type="submit" class="update-btn" onclick="return confirm('Are you sure you want to update?')">UPDATE</button>
+        </form>
+    </div>
+
+    <footer>
+        © 2025 BookMyTurf — Owner Dashboard
+    </footer>
+
+</body>
+</html>

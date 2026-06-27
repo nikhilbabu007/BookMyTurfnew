@@ -1,0 +1,292 @@
+<!DOCTYPE HTML>
+<html>
+{% load static %}
+<head>
+    <link rel="shortcut icon" href="{% static 'images1/logo-black-and-white.png' %}" type="image/png">
+    <title>BookMyTurf User Profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Gretong Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+    <!-- Bootstrap CSS -->
+    <link href="{% static 'dashboard/css/bootstrap.min.css' %}" rel='stylesheet' type='text/css' />
+
+    <!-- Custom CSS -->
+    <link href="{% static 'dashboard/css/style2.css' %}" rel='stylesheet' type='text/css' />
+    <link href="{% static 'dashboard/css/font-awesome.css' %}" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href='//fonts.googleapis.com/css?family=Roboto:700,500,300,100italic,100,400' rel='stylesheet' type='text/css'/>
+    <link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+    <!-- Additional Styles -->
+    <link rel="stylesheet" href="{% static 'dashboard/css/icon-font.min.css' %}" type='text/css' />
+
+    <!-- Chart Libraries -->
+    <script src="{% static 'dashboard/js/amcharts.js' %}"></script>
+    <script src="{% static 'dashboard/js/serial.js' %}"></script>
+    <script src="{% static 'dashboard/js/light.js' %}"></script>
+    <script src="{% static 'dashboard/js/jquery-1.10.2.min.js' %}"></script>
+    <script src="{% static 'dashboard/js/pie-chart.js' %}" type="text/javascript"></script>
+
+    <!-- Custom Styles for White Background and Button Arrangement -->
+    <style>
+      body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    min-height: 100vh;
+
+    /* Add background image */
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                url("{% static 'images1/footballturf14.jpg' %}") no-repeat center center fixed;
+    background-size: cover;
+}
+
+
+        .navbar {
+            background: #4CAF50; /* Matching turf green */
+            padding: 15px 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid #388E3C;
+        }
+
+        .navbar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .navbar li {
+            position: relative;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .navbar i {
+            margin-right: 8px;
+        }
+
+      .main-content {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+
+    background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)),
+                url("{% static 'images1/footballturf14.jpg' %}") no-repeat center center;
+    background-size: cover;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .profile-header h3 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #4CAF50;
+            margin: 0;
+        }
+
+        .profile-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .profile-card .form-group {
+            margin-bottom: 20px;
+        }
+
+        .profile-card label {
+            font-weight: 600;
+            color: #4CAF50;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .profile-card input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            background: #f9f9f9;
+            color: #333;
+        }
+
+        .profile-card input:disabled {
+            background: #f0f0f0;
+            cursor: not-allowed;
+        }
+
+        .btn-custom {
+            background: linear-gradient(135deg, #4CAF50 0%, #388E3C 100%);
+            color: #fff;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn-custom:hover {
+            background: linear-gradient(135deg, #388E3C 0%, #4CAF50 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .back-link {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 15px;
+            border-radius: 8px;
+            background: #f0f0f0;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: #e0e0e0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .profile-card {
+                padding: 20px;
+            }
+            .profile-header h3 {
+                font-size: 28px;
+            }
+            .button-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Back Link -->
+    <a href="login.html" class="back-link">&laquo; Back</a>
+
+    <!-- Top Navbar -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="userpro"><i class="glyphicon glyphicon-user"></i> Profile</a></li>
+            <li><a href="prof"><i class="glyphicon glyphicon-home"></i> Home</a></li>
+            <!-- Add more menu items if needed -->
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Profile Header -->
+        <div class="profile-header">
+            <h3>USER PROFILE</h3>
+        </div>
+
+        <!-- Profile Card -->
+        {% for i in r %}
+        <div class="profile-card">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input id="name" type="text" value="{{i.name}}" disabled>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input id="phone" type="text" value="{{i.phno}}" disabled>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" type="text" value="{{i.email}}" disabled>
+            </div>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input id="username" type="text" value="{{i.username}}" disabled>
+            </div>
+            <div class="button-group">
+                <form method="POST" action="userup">
+                    {% csrf_token %}
+                    <input type="text" value="{{i.username}}" name="c1" hidden>
+                    <input type="submit" class="btn-custom" value="Update Profile">
+                </form>
+                <a href="chpass" class="btn-custom">Change Password</a>
+                <a href="usrnmup" class="btn-custom">Change Username</a>
+            </div>
+        </div>
+        {% endfor %}
+
+        <!-- Hidden Charts Section (for functionality) -->
+        <div style="display: none;">
+            <!-- Include chart divs and scripts here if needed -->
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Pie Chart Script
+        $(document).ready(function () {
+            $('#demo-pie-1').pieChart({
+                barColor: 'red',
+                trackColor: 'blue',
+                lineCap: 'round',
+                lineWidth: 8,
+                onStep: function (from, to, percent) {
+                    $(this.element).find('.pie-value').text(Math.round(percent) + '%');
+                }
+            });
+            // Other pie charts...
+        });
+    </script>
+
+    <script src="{% static 'dashboard/js/bootstrap.min.js' %}"></script>
+    <!-- Other scripts as needed -->
+</body>
+</html>

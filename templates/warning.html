@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zxx">
+{% load static %}
+<head>
+	<link rel="shortcut icon" href="{% static 'images1/logo-black-and-white.png' %}" type="">
+    <title>BookMyTurf Warning</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="keywords" content="Poly Clinic Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+	SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!-- Custom Theme files -->
+     <link href="{% static 'index/css/bootstrap.css' %}" type="text/css" rel="stylesheet" media="all">
+    <link href="{% static 'index/css/style2labs.css' %}" type="text/css" rel="stylesheet" media="all">
+
+    <link rel="stylesheet" href="{% static 'chpassword/css/style1.css' %}" type="text/css" media="all" />
+
+
+    <!-- font-awesome icons -->
+    <link href="css/fontawesome-all.min.css" rel="stylesheet">
+    <!-- //Custom Theme files -->
+    <!-- online-fonts -->
+    <link href="//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+</head>
+
+<body>
+<br>
+<form action="vturf"  method="post">
+    {% csrf_token %}
+    <input type="submit" value="Back">
+</form>
+
+	<div class="container-agille">
+		<div class="formBox level-login">
+                <h1>
+		Warning Message
+	</h1>
+			<div class="box loginBox">
+				<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Warning Message</h3>
+				<form class="form" action="turfwar" method="post">
+					 {% csrf_token %}
+					{% for i in r %}
+					<div class="f_row-2">
+						<input type="text" name="n"  value="{{i.email}}" class="input-field" placeholder="email"  required>
+					</div>
+					{% endfor %}
+					<div class="f_row-2 last">
+						 <textarea  placeholder="message" name="n1" class="pass" type="text" required=""></textarea>
+					</div>
+					<input class="submit-w3" type="submit" class="btn btn-defeault btn-send"  value="Send email">
+				</form>
+			</div>
+
+
+
+<script>
+						 function myFunction() {
+								  alert("success").then(response => {
+									window.location.href = 'vturf.html';
+								  })
+								}
+</script>
+        </div>
+    </div>
+</body>
+</html>

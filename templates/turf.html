@@ -1,0 +1,188 @@
+<!DOCTYPE HTML>
+<html>
+{% load static %}
+<head>
+    <link rel="shortcut icon" href="{% static 'images1/logo-black-and-white.png' %}" type="">
+    <title>BookMYTurf</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <link href="{% static 'dashboard/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'dashboard/css/font-awesome.css' %}" rel="stylesheet">
+    <link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+    <style>
+   body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+
+    /* Background image */
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                url("{% static 'images1/207329881-generative-ai-grass-inside-the-football-stadium.jpg' %}") no-repeat center center fixed;
+    background-size: cover;
+
+    /* Optional: if you want a smooth gradient overlay */
+    /* background-blend-mode: overlay; */
+}
+
+        @keyframes gradientShift {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+
+        /* Navbar as buttons */
+        .navbar {
+            background: transparent;
+            border: none;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .navbar-nav {
+            display: inline-flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+        .navbar-nav > li {
+            list-style: none;
+        }
+        .navbar-nav > li > a {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid #FFD700;
+            color: #FFD700 !important;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+        .navbar-nav > li > a:hover {
+            background: #FFD700;
+            color: #000 !important;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        /* Hero section */
+        .hero {
+            text-align: center;
+            margin-top: 100px;
+            padding: 50px 20px;
+        }
+        .hero h1 {
+            font-size: 4em;
+            font-weight: 700;
+            color: #FFD700;
+            text-shadow: 0 3px 6px rgba(0,0,0,0.3);
+        }
+        .hero p {
+            font-size: 1.2em;
+            color: #fff;
+            margin-top: 10px;
+        }
+        .hero .btn-primary {
+            margin-top: 20px;
+            background-color: #FFD700;
+            border-color: #FFD700;
+            color: #000;
+            font-weight: bold;
+            border-radius: 30px;
+            padding: 12px 40px;
+            transition: all 0.3s ease;
+        }
+        .hero .btn-primary:hover {
+            background-color: #FFA500;
+            transform: scale(1.05);
+            box-shadow: 0 5px 12px rgba(0,0,0,0.2);
+        }
+
+        /* Info cards section */
+        .features {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin: 80px auto;
+            max-width: 1000px;
+            padding: 0 20px;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            text-align: center;
+            color: #fff;
+            padding: 30px;
+            flex: 1 1 250px;
+            transition: all 0.4s ease;
+        }
+        .card i {
+            font-size: 3em;
+            color: #FFD700;
+            margin-bottom: 15px;
+        }
+        .card:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #eee;
+            font-size: 0.9em;
+            margin-top: 50px;
+            background: rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <ul class="navbar-nav">
+            <li><a href="profi"><i class="fa fa-home"></i> Home</a></li>
+            <li><a href="profile"><i class="fa fa-user"></i> Profile</a></li>
+            <li><a href="{% url 'turf_view_bookings' %}"><i class="fa fa-book"></i>Bookings</a></li>
+            <li><a href="login.html"><i class="fa fa-sign-out"></i> Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1><i class="fa fa-futbol-o"></i> BookMYTurf</h1>
+        <p>Your turf, your time — book, play, and win effortlessly.</p>
+        <a href="profile" class="btn btn-primary">View Profile</a>
+
+		<a href="{% url 'turf_view_bookings' %}" class="btn btn-primary"> Bookings</a>
+    </section>
+    <!-- Features / Highlights -->
+    <section class="features">
+        <div class="card">
+            <h3>Easy Booking</h3>
+            <p>Reserve your favorite turf in just a few clicks anytime, anywhere.</p>
+        </div>
+        <div class="card">
+            <h3>Track Performance</h3>
+            <p>Get insights on bookings, payments, and player trends with ease.</p>
+        </div>
+        <div class="card">
+            <h3>Secure Payments</h3>
+            <p>Fast, safe, and convenient payment processing for all bookings.</p>
+        </div>
+    </section>
+
+    <footer>
+        © 2025 BookMYTurf — All Rights Reserved.
+    </footer>
+
+    <script src="{% static 'dashboard/js/jquery-1.10.2.min.js' %}"></script>
+    <script src="{% static 'dashboard/js/bootstrap.min.js' %}"></script>
+</body>
+</html>

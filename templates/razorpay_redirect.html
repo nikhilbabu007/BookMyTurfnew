@@ -1,0 +1,219 @@
+<!--
+	Author: W3layouts
+	Author URL: http://w3layouts.com
+	License: Creative Commons Attribution 3.0 Unported
+	License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+<title>Fare Payment Widget Responsive Widget Template :: W3layouts</title>
+<!-- Meta tag Keywords -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Fare Payment Widget Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Meta tag Keywords -->
+
+<!-- css files -->
+<link href="{% static 'payment/css/style1pay.css' %}" rel="stylesheet" type="text/css" media="all">
+<link rel="stylesheet" href="{% static 'payment/css/creditly.css' %}" type="text/css" media="all" /> <!-- credit-card-CSS -->
+<!-- //css files -->
+
+<!-- online-fonts -->
+<link href="//fonts.googleapis.com/css?family=Josefin+Sans:100,100i,300,300i,400,400i,600,600i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+<!--//online-fonts -->
+
+</head>
+<body>
+<br>
+<a href="pro" class="">&laquo; Back</a>
+
+ <br><br><br>
+<div class="w3-main">
+		<div  style="margin: 0 auto;height:600px;width:600px">
+			<div class="book-form">
+				<h2 class="tittle">Payment Form</h2>
+			    <form action="pay" method="post" class="creditly-card-form agileinfo_form">
+					{% csrf_token %}
+				   {% for i in r %}
+                    <label>Lab Name</label>
+					<input placeholder="Name" disabled value="{{i.name}}" name="a1" class="name" type="text" required="">
+					<label>User Name</label>
+                    <input placeholder="Name" disabled value="{{i.patient_name}}" name="a2" class="name" type="text" required="">
+					<label>Email</label>
+                    <input placeholder="Name" disabled value="{{i.email}}" name="a3" class="name" type="text" required="">
+					<label>Test Name</label>
+                    <input placeholder="Name" disabled value="{{i.test}}" name="a4" class="name" type="text" required="">
+					<label>Amount</label>
+                    <input placeholder="amount" disabled value="{{r1}}" name="a5" class="name" type="text" required="">
+					<label>Service Charge</label>
+                    <input placeholder="amount" disabled value="{{10}}" name="a6" class="name" type="text" required="">
+					{% endfor %}
+
+					<div class="make wow shake">
+						  <input type="submit" name="submit" value="Pay Now">
+					</div>
+				</form>
+			</div>
+
+		</div>
+
+		<div class="clear"> </div>
+	</div>
+</div>
+<!-- //Main -->
+
+<!-- footer -->
+<div class="footer-w3l">
+<!--	<p>&copy; 2017 Fare Payment Widget. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>-->
+</div>
+<!-- //footer -->
+
+	<!-- js-scripts-->
+		<script type="text/javascript" src="{% static 'payment/js/jquery-2.1.4.min.js' %}"></script>
+
+	<!-- credit-card -->
+		<script type="text/javascript" src="{% static 'payment/js/creditly.js' %}"></script>
+		<script type="text/javascript">
+			$(function() {
+			  var creditly = Creditly.initialize(
+				  '.creditly-wrapper .expiration-month-and-year',
+				  '.creditly-wrapper .credit-card-number',
+				  '.creditly-wrapper .security-code',
+				  '.creditly-wrapper .card-type');
+
+			  $(".creditly-card-form .submit").click(function(e) {
+				e.preventDefault();
+				var output = creditly.validate();
+				if (output) {
+				  // Your validated credit card output
+				  console.log(output);
+				}
+			  });
+			});
+		</script>
+	<!-- //credit-card -->
+
+	<!-- //js-scripts-->
+</body>
+</html>
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="zxx">-->
+<!--{% load static %}-->
+<!--<head>-->
+<!--    <title>Poly Clinic Medical Category Bootstrap Responsive website Template | Contact :: w3layouts</title>-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--    <meta charset="utf-8" />-->
+<!--    <meta name="keywords" content="Poly Clinic Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,-->
+<!--	SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />-->
+<!--    <script>-->
+<!--        addEventListener("load", function () {-->
+<!--            setTimeout(hideURLbar, 0);-->
+<!--        }, false);-->
+
+<!--        function hideURLbar() {-->
+<!--            window.scrollTo(0, 1);-->
+<!--        }-->
+<!--    </script>-->
+<!--    &lt;!&ndash; Custom Theme files &ndash;&gt;-->
+<!--    <link href="{% static 'index/css/bootstrap.css' %}" type="text/css" rel="stylesheet" media="all">-->
+<!--    <link href="{% static 'index/css/style3user.css' %}" type="text/css" rel="stylesheet" media="all">-->
+
+<!--	<link href="{% static 'payment/css/style1.css' %}" rel="stylesheet" type="text/css" media="all">-->
+
+
+
+<!--    &lt;!&ndash; font-awesome icons &ndash;&gt;-->
+<!--    <link href="css/fontawesome-all.min.css" rel="stylesheet">-->
+<!--    &lt;!&ndash; //Custom Theme files &ndash;&gt;-->
+<!--    &lt;!&ndash; online-fonts &ndash;&gt;-->
+<!--    <link href="//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">-->
+<!--</head>-->
+
+<!--<body>-->
+<!--    &lt;!&ndash; banner &ndash;&gt;-->
+<!--    <div class="inner-banner" id="home">-->
+<!--        &lt;!&ndash; header &ndash;&gt;-->
+<!--        <header>-->
+<!--            <nav class="navbar navbar-expand-lg navbar-light bg-gradient-secondary pt-3">-->
+
+<!--                <h1>-->
+<!--                    <a class="navbar-brand text-white" href="index.html">-->
+
+<!--                        <span></span>-->
+<!--                    </a>-->
+<!--                </h1>-->
+<!--                <button class="navbar-toggler ml-md-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"-->
+<!--                    aria-expanded="false" aria-label="Toggle navigation">-->
+<!--                    <span class="navbar-toggler-icon"></span>-->
+<!--                </button>-->
+
+<!--                <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
+<!--                    <ul class="navbar-nav ml-lg-auto text-center">-->
+<!--                             <li class="nav-item  mr-3 ">-->
+<!--                            <a class="nav-link text-white" href="pro">Home-->
+<!--                                <span class="sr-only">(current)</span>-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                        <li class="nav-item  mr-3">-->
+<!--                            <a class="nav-link text-white text-capitalize  active" href="userpro">View Profile</a>-->
+<!--                        </li>-->
+
+<!--&lt;!&ndash;                        <li class="nav-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <a class="nav-link  text-white text-capitalize" href="comp">complaint</a>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </li>&ndash;&gt;-->
+<!--                        <li class="nav-item  mr-3 ">-->
+<!--                            <a class="nav-link text-white text-capitalize" href="viewapp">View Appointment</a>-->
+<!--                        </li>-->
+<!--                        <li class="nav-item  mr-3 ">-->
+<!--                            <a class="nav-link text-white text-capitalize" href="logout">Logout</a>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+
+<!--            </nav>-->
+<!--        </header>-->
+<!--        &lt;!&ndash; //header &ndash;&gt;-->
+<!--        &lt;!&ndash; //container &ndash;&gt;-->
+<!--    </div>-->
+<!--    &lt;!&ndash; breadcrumbs &ndash;&gt;-->
+<!--    <nav aria-label="breadcrumb">-->
+<!--        <ol class="breadcrumb">-->
+<!--            <li class="breadcrumb-item">-->
+<!--                <a href="index.html">User</a>-->
+<!--            </li>-->
+<!--            <li class="breadcrumb-item active" aria-current="page">Payment</li>-->
+<!--        </ol>-->
+<!--    </nav>-->
+
+<!--	<br><br>-->
+<!--    <div class="w3-main">-->
+<!--      <div  style="margin: 0 auto;height:600px;width:600px">-->
+<!--			<div class="book-form">-->
+<!--				<h2 class="tittle">Payment Form</h2>-->
+<!--			    <form action="pay/{{r1}}" method="post" class="creditly-card-form agileinfo_form">-->
+<!--					{% csrf_token %}-->
+<!--				   {% for i in r %}-->
+<!--					<input placeholder="Name"  disabled  value="{{i.name}}" name="a1" class="name" type="text" required="">-->
+<!--					<input placeholder="Name"  disabled value="{{i.patient_name}}" name="a2" class="name" type="text" required="">-->
+<!--					<input placeholder="Name"  disabled value="{{i.email}}" name="a3" class="name" type="text" required="">-->
+<!--					<input placeholder="Name"  disabled value="{{i.test}}" name="a4" class="name" type="text" required="">-->
+<!--					<input placeholder="amount" disabled value="{{r1}}" name="a5" class="name" type="text" required="">-->
+<!--					{% endfor %}-->
+
+<!--					<div class="make wow shake">-->
+<!--						  <input type="submit" name="submit" value="Pay Now">-->
+<!--					</div>-->
+<!--				</form>-->
+<!--			</div>-->
+
+<!--      </div>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->

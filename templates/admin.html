@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookMyTurf Admin</title>
+    <link rel="shortcut icon" href="{% static 'images/logo-black-and-white.png' %}" type="image/png">
+
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="{% static 'index/css/fontawesome-all.min.css' %}" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link href="{% static 'index/css/bootstrap.css' %}" rel="stylesheet">
+
+    <style>
+        /* --- Body & Fonts --- */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: url("{% static 'images1/207329881-generative-ai-grass-inside-the-football-stadium.jpg' %}") no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        /* --- Navbar --- */
+        .navbar {
+            background: rgba(0, 128, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+        .navbar-nav .nav-link {
+            color: #fff !important;
+            font-weight: 600;
+            margin-right: 15px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: #FFD700 !important;
+        }
+
+        /* 🔴 Notification Badge */
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -10px;
+            background: red;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            border-radius: 50%;
+            padding: 3px 6px;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7); }
+            70% { box-shadow: 0 0 0 8px rgba(255, 0, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
+        }
+
+        .dropdown-menu {
+            background: rgba(0, 128, 0, 0.95);
+            border: none;
+        }
+        .dropdown-item {
+            color: #fff !important;
+            transition: all 0.3s ease;
+        }
+        .dropdown-item:hover {
+            color: #000 !important;
+            background: #FFD700 !important;
+        }
+
+        /* --- Banner Section --- */
+        .banner {
+            position: relative;
+            height: 50vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            margin: 20px;
+        }
+        .banner-text h1 {
+            font-size: 2.8em;
+            color: #FFD700;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        .banner-text span {
+            font-size: 1.5em;
+            color: #fff;
+        }
+
+        /* --- Dashboard Cards --- */
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 40px auto;
+            max-width: 1200px;
+        }
+        .card-box {
+            background: #e3f4e3;
+            border-radius: 20px;
+            width: 250px;
+            margin: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+        }
+        .card-box h3 {
+            font-size: 1.5em;
+            color: #228B22;
+            margin-bottom: 15px;
+        }
+        .card-box p {
+            font-size: 1.1em;
+            color: #333;
+        }
+
+        /* --- Footer --- */
+        .cpy-right {
+            text-align: center;
+            padding: 20px;
+            color: #333;
+            background: #c6f1c6;
+            margin-top: 40px;
+            border-top: 1px solid #b3e6b3;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .banner h1 {
+                font-size: 2em;
+            }
+            .banner span {
+                font-size: 1.2em;
+            }
+            .card-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <h1><a class="navbar-brand text-white" href="addm">Admin</a></h1>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto text-center">
+                <li class="nav-item"><a class="nav-link active" href="addm">Home</a></li>
+
+                <!-- ✅ Request link with dynamic badge + tooltip -->
+                <li class="nav-item">
+                    <a class="nav-link" href="ad"
+                       {% if pending_count > 0 %}
+                       data-toggle="tooltip" data-placement="bottom"
+                       title="{{ pending_count }} new request{% if pending_count > 1 %}s{% endif %} pending"
+                       {% endif %}>
+                        Request
+                        {% if pending_count > 0 %}
+                            <span class="notification-badge">{{ pending_count }}</span>
+                        {% endif %}
+                    </a>
+                </li>
+
+                <li class="nav-item"><a class="nav-link" href="vturf">View Turfs</a></li>
+                <li class="nav-item"><a class="nav-link" href="vbook">View Booking</a></li>
+                <li class="nav-item"><a class="nav-link" href="adviewcon">Feedbacks</a></li>
+                <li class="nav-item"><a class="nav-link" href="login.html">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Banner -->
+    <section class="banner">
+        <div class="banner-text">
+            <span>Book your</span>
+            <h1>slots now!</h1>
+        </div>
+    </section>
+
+    <!-- Dashboard Cards -->
+    <div class="card-container">
+        <div class="card-box">
+            <h3>Total Turfs</h3>
+            <p>{{d4}}</p>
+        </div>
+        <div class="card-box">
+            <h3>Total Bookings</h3>
+            <p>{{d8}}</p>
+        </div>
+        <div class="card-box">
+            <h3>Pending Requests</h3>
+            <p>{{ pending_count }}</p>
+        </div>
+        <div class="card-box">
+            <h3>Feedbacks</h3>
+            <p>{{d6}}</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="cpy-right">
+        © 2025 BookMyTurf Admin — All rights reserved
+    </div>
+
+    <!-- JS -->
+    <script src="{% static 'index/js/jquery-2.2.3.min.js' %}"></script>
+    <script src="{% static 'index/js/bootstrap.js' %}"></script>
+
+    <!-- Enable Bootstrap Tooltips -->
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+</body>
+</html>

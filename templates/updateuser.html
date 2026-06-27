@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Update | BookMyTurf</title>
+    <link rel="shortcut icon" href="{% static 'images1/logo-black-and-white.png' %}" type="image/png">
+
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="{% static 'register/css/font-awesome.min.css' %}" rel="stylesheet">
+
+    <style>
+        /* ===== Base Styles ===== */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background:
+                linear-gradient(rgba(0, 60, 0, 0.75), rgba(0, 0, 0, 0.85)),
+                url("{% static 'images1/207329881-generative-ai-grass-inside-the-football-stadium.jpg' %}") no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        /* ===== Back Button ===== */
+        .back-link {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            color: #FFD700;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .back-link:hover {
+            color: #FFA500;
+        }
+
+        /* ===== Main Container ===== */
+        .update-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: 40px 35px;
+            width: 90%;
+            max-width: 450px;
+            margin-top: 90px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        .update-box h2 {
+            font-size: 2em;
+            margin-bottom: 25px;
+            color: #FFD700;
+            letter-spacing: 1px;
+        }
+
+        /* ===== Input Fields ===== */
+        .update-box input[type="text"],
+        .update-box input[type="email"],
+        .update-box input[type="number"] {
+            width: 100%;
+            padding: 12px 15px;
+            margin: 10px 0;
+            border-radius: 25px;
+            border: none;
+            outline: none;
+            background: rgba(255, 255, 255, 0.15);
+            color: #fff;
+            font-size: 0.95em;
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .update-box input:focus {
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 0 8px #FFD700;
+        }
+
+        /* ===== Submit Button ===== */
+        .update-box input[type="submit"] {
+            background: #FFD700;
+            color: #000;
+            border: none;
+            border-radius: 25px;
+            padding: 12px 40px;
+            font-weight: 700;
+            margin-top: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .update-box input[type="submit"]:hover {
+            background: #FFA500;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+
+        /* ===== Messages & Footer ===== */
+        .messages {
+            margin-top: 20px;
+        }
+        .messages h4 {
+            color: #FFD700;
+            font-weight: 500;
+        }
+
+        footer {
+            text-align: center;
+            color: #ccc;
+            font-size: 0.9em;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 480px) {
+            .update-box {
+                padding: 30px 25px;
+            }
+            .update-box h2 {
+                font-size: 1.6em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Back Button -->
+    <a href="userpro" class="back-link"><i class="fa fa-chevron-left"></i> Back</a>
+
+    <!-- Main Update Box -->
+    <div class="update-box">
+        <h2>User Update</h2>
+        <form action="userupdate" method="POST">
+            {% csrf_token %}
+            {% for i in r %}
+                <input type="hidden" name="w" value="{{ i.username }}">
+                <input type="text" name="a1" value="{{ i.name }}" placeholder="Name" required>
+                <input type="text" name="a3" value="{{ i.phno }}" placeholder="Phone Number" pattern="[0-9]{10}" required>
+                <input type="email" name="a4" value="{{ i.email }}" placeholder="Email" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" required>
+            {% endfor %}
+            <input type="submit" value="UPDATE" onclick="return confirm('Are you sure you want to update this user information?')">
+        </form>
+
+        <!-- Messages -->
+        <div class="messages">
+            {% for i in messages %}
+                <h4>{{ i }}</h4>
+            {% endfor %}
+        </div>
+    </div>
+
+    <footer>
+        © 2025 BookMyTurf — Manage Your Turf Smartly
+    </footer>
+</body>
+</html>

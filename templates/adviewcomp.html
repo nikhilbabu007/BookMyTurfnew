@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookMyTurf Admin | View Complaints</title>
+    <link rel="shortcut icon" href="{% static 'images1/logo-black-and-white.png' %}" type="image/png">
+
+    <!-- Bootstrap & Fonts -->
+    <link href="{% static 'index/css/bootstrap.css' %}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="{% static 'index/css/fontawesome-all.min.css' %}" rel="stylesheet">
+
+    <style>
+        /* Global */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background: linear-gradient(rgba(0, 128, 0, 0.5), rgba(0, 100, 0, 0.5)),
+                        url("{% static 'images1/bg-turf.jpg' %}") center/cover no-repeat fixed;
+            min-height: 100vh;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(0, 100, 0, 0.85);
+            backdrop-filter: blur(5px);
+        }
+        .navbar-brand {
+            font-weight: 700;
+            color: #fff !important;
+        }
+        .navbar-nav .nav-link {
+            color: #fff !important;
+            font-weight: 600;
+            margin-right: 15px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: #FFD700 !important;
+        }
+
+        /* 🔴 Notification Badge */
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -10px;
+            background: red;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            border-radius: 50%;
+            padding: 3px 6px;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7); }
+            70% { box-shadow: 0 0 0 8px rgba(255, 0, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            background: transparent;
+            margin-top: 1rem;
+            color: #fff;
+        }
+        .breadcrumb a {
+            color: #FFD700;
+            text-decoration: none;
+        }
+        .breadcrumb-item.active {
+            color: #fff;
+        }
+
+        /* Main Card */
+        .complaints-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            padding: 30px;
+            margin: 50px auto;
+            max-width: 1100px;
+            backdrop-filter: blur(5px);
+        }
+        .complaints-card h2 {
+            text-align: center;
+            color: #006400;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+        }
+        th {
+            background-color: #228B22;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            font-weight: 600;
+        }
+        td {
+            text-align: center;
+            padding: 12px;
+            vertical-align: middle;
+        }
+        tr:nth-child(even) {
+            background-color: #f4fff4;
+        }
+        tr:hover {
+            background-color: #d7ffd7;
+            transition: 0.2s ease;
+        }
+
+        /* ✅ Reply Button */
+        .reply-btn {
+            background-color: #28a745;
+            color: #fff !important;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 14px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+        .reply-btn:hover {
+            background-color: #218838;
+            color: #fff !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            color: #fff;
+            padding: 15px;
+            margin-top: 50px;
+            background: rgba(0, 100, 0, 0.85);
+        }
+
+        @media (max-width: 768px) {
+            .complaints-card {
+                margin: 20px;
+                padding: 20px;
+            }
+            th, td {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="addm">Admin</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto text-center">
+                <li class="nav-item"><a class="nav-link" href="addm">Home</a></li>
+                <li class="nav-item">
+
+                <li class="nav-item"><a class="nav-link" href="vturf">View Turf</a></li>
+                <li class="nav-item"><a class="nav-link" href="vbook">View Booking</a></li>
+                <li class="nav-item"><a class="nav-link active" href="adviewco">Complaint</a></li>
+                <li class="nav-item"><a class="nav-link" href="adviewcon">Feedback</a></li>
+                <li class="nav-item"><a class="nav-link" href="payt">Payment</a></li>
+                <li class="nav-item"><a class="nav-link" href="logout">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb justify-content-center">
+            <li class="breadcrumb-item"><a href="addm">Admin</a></li>
+            <li class="breadcrumb-item active" aria-current="page">View Complaints</li>
+        </ol>
+    </nav>
+
+    <!-- Complaints Table -->
+    <div class="complaints-card">
+        <h2>📋 User Complaints</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone No</th>
+                        <th>Complaint</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in r %}
+                    <tr>
+                        <td>{{ i.name }}</td>
+                        <td>{{ i.email }}</td>
+                        <td>{{ i.mobile }}</td>
+                        <td>{{ i.complaints }}</td>
+                        <td>
+                            <a href="reply" class="btn btn-success btn-sm reply-btn">
+                              <i class="fas fa-reply"></i> Give Reply
+                            </a>
+
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="5" class="text-center text-muted">No complaints available.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        © 2025 BookMyTurf Admin — All Rights Reserved
+    </footer>
+
+    <!-- Scripts -->
+    <script src="{% static 'index/js/jquery-2.2.3.min.js' %}"></script>
+    <script src="{% static 'index/js/bootstrap.js' %}"></script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+</body>
+</html>

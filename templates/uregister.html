@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+	<link rel="shortcut icon" href="{% static 'images1/logo-black-and-white.png' %}" type="">
+<title>User Register</title>
+<!-- Meta tag Keywords -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Flat Sign Up Form Responsive Widget Template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+<link href="{% static 'register/css/style2lab.css' %}" rel="stylesheet" type="text/css" media="all">
+<link href="{% static 'register/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css" media="all">
+
+<link href='//fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'><link href='//fonts.googleapis.com/css?family=Raleway+Dots' rel='stylesheet' type='text/css'>
+
+<style>
+    /* Football Turf Inspired Modern CSS */
+body {
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #fff;
+    overflow-x: hidden;
+    position: relative;
+
+
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url("{% static 'images1/footballturf8.jpg' %}") no-repeat center center fixed;
+    background-size: cover;
+}
+    body::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+        opacity: 0.5;
+        z-index: -1;
+    }
+    body::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: rgba(255,255,255,0.5);
+        z-index: -1;
+    }
+    .back-link {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.3s;
+        z-index: 10;
+    }
+    .back-link:hover {
+        color: #ffeb3b;
+    }
+    .main-agileits {
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(15px);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        padding: 50px;
+        width: 100%;
+        max-width: 450px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+    .main-agileits::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background:
+            radial-gradient(circle at 30% 70%, rgba(255,255,255,0.1) 0%, transparent 40%),
+            linear-gradient(45deg, transparent 48%, rgba(255,255,255,0.2) 49%, rgba(255,255,255,0.2) 51%, transparent 52%);
+        z-index: -1;
+    }
+    .main-agileits::after {
+        content: '⚽';
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 2.5rem;
+        color: rgba(255, 255, 255, 0.5);
+        z-index: -1;
+    }
+    .sub-head {
+        font-size: 2.5rem;
+        font-weight: 900;
+        color: #fff;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+        margin-bottom: 30px;
+        position: relative;
+    }
+    .sub-head::before {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 4px;
+        background: #ffeb3b;
+        border-radius: 2px;
+    }
+    .sub-main {
+        position: relative;
+        z-index: 1;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+    input[type="text"], input[type="password"] {
+        width: 100%;
+        padding: 15px 20px;
+        margin-bottom: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 12px;
+        color: #fff;
+        font-size: 1rem;
+        transition: border-color 0.3s, box-shadow 0.3s;
+        box-sizing: border-box;
+    }
+    input[type="text"]::placeholder, input[type="password"]::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+    }
+    input[type="text"]:focus, input[type="password"]:focus {
+        border-color: #ffeb3b;
+        box-shadow: 0 0 15px rgba(255, 235, 59, 0.5);
+        outline: none;
+    }
+    .btn-send {
+        width: 100%;
+        padding: 15px;
+        background: linear-gradient(135deg, #ffeb3b 0%, #ffc107 100%);
+        color: #2e7d32;
+        border: none;
+        border-radius: 12px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.3s, box-shadow 0.3s;
+        margin-top: 10px;
+        position: relative;
+    }
+    .btn-send:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 30px rgba(255, 235, 59, 0.4);
+    }
+    .btn-send::before {
+        content: '⚽';
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.2rem;
+    }
+    .footer-w3 {
+        margin-top: 30px;
+        font-size: 0.9rem;
+        color: #ccc;
+        text-align: center;
+    }
+    /* Responsive adjustments */
+    @media (max-width: 480px) {
+        .main-agileits {
+            padding: 30px;
+            margin: 20px;
+        }
+        .sub-head {
+            font-size: 2rem;
+        }
+    }
+</style>
+</head>
+<body>
+
+<a href="/" class="back-link">&laquo; Back</a>
+<div class="main-agileits">
+	<h2 class="sub-head">User Register</h2>
+		<div class="sub-main">
+			<form action="user.html" method="POST">
+                {% csrf_token %}
+				<input placeholder="Name" name="n1" class="name" type="text" required="">
+				<input placeholder="Username" name="n2" class="name" type="text" required="">
+				<input type="text" placeholder="Phone Number" name="n4" class="number" pattern="[0-9]{10}" required="">
+				<input  placeholder="Email" name="n3" class="name" type="text" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" required="">
+				<input  placeholder="Password" name="n5" class="pass" type="password"  required="">
+				<input type="submit" value="signup" class="btn btn-defeault btn-send"  onclick="return confirm('Are You Sure')">
+			</form>
+		</div>
+		<div class="clear"></div>
+</div>
+<!--//main-->
+<script>
+
+</script>
+<!--footer-->
+<div class="footer-w3">
+<!--	<p>&copy; 2016 Flat Sign Up Form . All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>-->
+</div>
+
+
+</body>
+</html>

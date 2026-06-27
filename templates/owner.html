@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="{% static 'images1/logo-black-and-white.png' %}">
+    <title>Owner Profile | BookMyTurf</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        /* --- GLOBAL STYLES --- */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: url("{% static 'images1/footballturf5.jpg' %}") center/cover no-repeat fixed;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+        }
+
+        /* --- NAVBAR --- */
+        nav {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 12px 25px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 15px;
+            z-index: 10;
+        }
+
+        nav .logo {
+            color: #FFD700;
+            font-weight: 700;
+            font-size: 1.5em;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a.back-btn {
+            text-decoration: none;
+            color: #fff;
+            background: #007bff;
+            padding: 6px 16px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: 0.3s;
+            font-size: 0.95em;
+        }
+
+        nav a.back-btn:hover {
+            background: #0056b3;
+        }
+
+        /* --- PROFILE SECTION --- */
+        .profile-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding-top: 100px;
+        }
+
+        .profile-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            width: 900px;
+            max-width: 95%;
+            padding: 40px 50px;
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            color: #fff;
+            position: relative;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+
+        /* --- IMAGE --- */
+        .profile-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .profile-image img {
+            width: 230px;
+            height: 230px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+            border: 3px solid #FFD700;
+        }
+
+        /* --- DETAILS --- */
+        .profile-details {
+            flex: 2;
+        }
+
+        .profile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .profile-header h1 {
+            color: #FFD700;
+            font-size: 2.3em;
+            font-weight: 700;
+            margin: 0;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .profile-header .edit-btn {
+            text-decoration: none;
+            background: #FFD700;
+            color: #000;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-size: 0.95em;
+        }
+
+        .profile-header .edit-btn:hover {
+            background: #FFA500;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .profile-details p {
+            font-size: 1.1em;
+            margin: 12px 0;
+            line-height: 1.6;
+        }
+
+        .profile-details strong {
+            color: #00FA9A;
+            font-weight: 600;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            color: #ccc;
+            font-size: 0.9em;
+            padding: 30px 0;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .profile-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .profile-details {
+                margin-top: 20px;
+            }
+
+            .profile-header .edit-btn {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo"><i class="fa-solid fa-futbol"></i>&nbsp;BookMyTurf</div>
+        <a href="profile" class="back-btn"><i class="fa fa-arrow-left"></i> Back</a>
+    </nav>
+
+    <!-- PROFILE CARD -->
+    <div class="profile-wrapper">
+        <div class="profile-card">
+            <div class="profile-image">
+                {% for i in y %}
+                    <img src="{{ i.owner_image.url }}" alt="Owner Photo">
+                {% endfor %}
+            </div>
+
+            <div class="profile-details">
+                <div class="profile-header">
+                    <h1>Owner Profile</h1>
+                    <a href="upownr" class="edit-btn"><i class="fa fa-pencil"></i> Edit Profile</a>
+                </div>
+
+                {% for i in y %}
+                    <p><strong>Owner Name:</strong> {{ i.owner }}</p>
+                    <p><strong>Phone:</strong> {{ i.owner_phno }}</p>
+                    <p><strong>Email:</strong> {{ i.owner_email }}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        © 2025 BookMyTurf — Owner Dashboard
+    </footer>
+
+</body>
+</html>

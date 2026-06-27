@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookMyTurf Admin View Turfs</title>
+    <link rel="shortcut icon" href="{% static 'images1/logo-black-and-white.png' %}" type="image/png">
+
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="{% static 'index/css/fontawesome-all.min.css' %}" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="{% static 'index/css/bootstrap.css' %}" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #d0f0c0;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(0, 128, 0, 0.85);
+            backdrop-filter: blur(5px);
+        }
+        .navbar-nav .nav-link {
+            color: #fff !important;
+            font-weight: 600;
+            position: relative;
+        }
+        .navbar-nav .nav-link.active,
+        .navbar-nav .nav-link:hover {
+            color: #FFD700 !important;
+        }
+
+        /* 🔴 Notification Badge */
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -10px;
+            background: red;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            border-radius: 50%;
+            padding: 3px 6px;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7); }
+            70% { box-shadow: 0 0 0 8px rgba(255, 0, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
+        }
+
+        /* Breadcrumbs */
+        .breadcrumb {
+            background: #e3f4e3;
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 1200px;
+        }
+
+        /* Container Cards */
+        .container-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px auto 50px auto;
+            max-width: 1300px;
+        }
+        .turf-card {
+            background: #F0FFF0;
+            border-radius: 15px;
+            width: 350px;
+            margin: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .turf-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+        }
+
+        .turf-card img {
+            width: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .turf-card h3 {
+            font-size: 1.3em;
+            color: #228B22;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .turf-card p {
+            font-size: 0.95em;
+            margin: 3px 0;
+        }
+
+        .turf-card .image-section {
+            width: 100%;
+            margin: 10px 0;
+            text-align: center;
+        }
+        .turf-card .image-section img {
+            height: 100px;
+            width: 100px;
+            border-radius: 10px;
+            margin-bottom: 5px;
+        }
+        .turf-card .image-section span {
+            display: block;
+            font-size: 0.85em;
+            color: #555;
+        }
+
+        .turf-card .btn-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .turf-card .btn-container button {
+            width: 48%;
+            padding: 10px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 1.1em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .btn-remove {
+            background: #DC143C;
+            color: #fff;
+        }
+        .btn-remove:hover {
+            background: #8B0000;
+        }
+
+        .btn-warning {
+            background: #FFA500;
+            color: #fff;
+        }
+        .btn-warning:hover {
+            background: #CC8400;
+        }
+
+        /* Footer */
+        .cpy-right {
+            text-align: center;
+            padding: 20px;
+            color: #333;
+            background: #c6f1c6;
+            margin-top: 40px;
+            border-top: 1px solid #b3e6b3;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .turf-card {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <h1><a class="navbar-brand text-white" href="addm">Admin</a></h1>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto text-center">
+            <li class="nav-item"><a class="nav-link" href="addm">Home</a></li>
+
+            <!-- ✅ Request link with notification badge -->
+            <li class="nav-item">
+                <a class="nav-link" href="ad"
+                   {% if pending_count > 0 %}
+                   data-toggle="tooltip" data-placement="bottom"
+                   title="{{ pending_count }} new request{% if pending_count > 1 %}s{% endif %} pending"
+                   {% endif %}>
+                    Request
+                    {% if pending_count > 0 %}
+                        <span class="notification-badge">{{ pending_count }}</span>
+                    {% endif %}
+                </a>
+            </li>
+
+            <li class="nav-item"><a class="nav-link active" href="vturf">View Turfs</a></li>
+            <li class="nav-item"><a class="nav-link" href="vbook">View Booking</a></li>
+            <li class="nav-item"><a class="nav-link" href="logout">Logout</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Breadcrumbs -->
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="addm">Admin</a></li>
+        <li class="breadcrumb-item active" aria-current="page">View Turfs</li>
+    </ol>
+</nav>
+
+<!-- Turf Cards -->
+<div class="container-cards">
+    {% for i in r %}
+    <div class="turf-card">
+        <img src="{{ i.photo.url }}" alt="{{ i.name }}" onclick="window.open(this.src, '_blank')">
+        <h3>{{ i.name }}</h3>
+        <p><b>Address:</b> {{ i.address }}</p>
+        <p><b>Location:</b> {{ i.location }}</p>
+        <p><b>Owner:</b> {{ i.owner }}</p>
+        <p><b>Owner Phone:</b> {{ i.owner_phno }}</p>
+        <p><b>Owner Email:</b> {{ i.owner_email }}</p>
+        <p><b>Phone:</b> {{ i.phno }}</p>
+        <p><b>Email:</b> {{ i.email }}</p>
+
+        <!-- Owner Photo -->
+        <div class="image-section">
+            <img src="{{ i.owner_image.url }}" alt="Owner Photo" onclick="window.open(this.src, '_blank')">
+            <span>Owner Photo</span>
+        </div>
+
+        <!-- License Photo -->
+        <div class="image-section">
+            <img src="{{ i.license.url }}" alt="License Photo" onclick="window.open(this.src, '_blank')">
+            <span>License Photo</span>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="btn-container">
+            <form method="POST" action="deleteturf">
+                {% csrf_token %}
+                <input type="hidden" value="{{ i.username }}" name="b2">
+                <button type="submit" class="btn-remove" title="Remove Turf"><i class="fas fa-trash-alt"></i></button>
+            </form>
+            <form method="POST" action="turfwarning">
+                {% csrf_token %}
+                <input type="hidden" value="{{ i.name }}" name="b2">
+                <input type="hidden" value="{{ i.email }}" name="b3">
+                <button type="submit" class="btn-warning" title="Send Warning"><i class="fas fa-exclamation-triangle"></i></button>
+            </form>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- Footer -->
+<div class="cpy-right">
+    © 2025 BookMyTurf Admin — All rights reserved
+</div>
+
+<!-- JS -->
+<script src="{% static 'index/js/jquery-2.2.3.min.js' %}"></script>
+<script src="{% static 'index/js/bootstrap.js' %}"></script>
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+def log(request):
+    if request.method == 'POST':
+        a = request.POST['n1']
+        b = request.POST['n2']
+        try:
+            if a =='nikhil' and b=='123admin':
+                return render(request,'admin.html')
+            c = login.objects.get(username=a)
+            if c.status==1 :
+                request.session['uid'] = a
+                return render(request,'user.html')
+            elif c.status==2:
+                    f = turf.objects.get(username=a)
+                    if f.action == 'confirm':
+                        request.session['tid'] = a
+                        return render(request,'turf.html')
+                    else:
+                        messages.info(request, 'your request is processing...you can login once your request is being approved by the admin!')
+                        return render(request,'login.html')
+
+            else:
+                messages.info(request, 'login failed,password incorrect...')
+                return render(request, 'login.html')
+        except Exception:
+            messages.info(request, 'login failed,incorrect username...')
+            return render(request, 'login.html')
+    else:
+        return render(request,'login.html')

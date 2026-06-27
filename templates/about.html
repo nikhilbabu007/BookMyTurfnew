@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About | Book My Turf</title>
+
+  <link rel="shortcut icon" href="{% static 'images1/logo-black-and-white.png' %}" type="image/png">
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #0a0f16;
+      color: #f4f4f4;
+    }
+
+    /* Header */
+    .navbar {
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+    }
+
+    .navbar-brand {
+      color: #00ff88 !important;
+      font-weight: 700;
+      font-size: 1.6rem;
+      letter-spacing: 1px;
+    }
+
+    .nav-link {
+      color: #ddd !important;
+      margin: 0 10px;
+      transition: color 0.3s;
+    }
+
+    .nav-link:hover {
+      color: #00ff88 !important;
+    }
+
+    /* Hero / About Background */
+    .about-hero {
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                  url("{% static 'images1/turf-bg.jpg' %}") center/cover no-repeat;
+      color: #fff;
+      padding: 120px 0;
+      text-align: center;
+    }
+
+    .about-hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #00ff88;
+      margin-bottom: 15px;
+    }
+
+    .about-hero p {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto;
+      color: #ccc;
+    }
+
+    /* About Content Section */
+    .about-content {
+      background: #0a0f16;
+      padding: 80px 0;
+    }
+
+    .about-content img {
+      border-radius: 15px;
+      width: 100%;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    .about-content h2 {
+      color: #00ff88;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .about-content p {
+      color: #aaa;
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+
+    /* Values Section */
+    .values-section {
+      background: linear-gradient(135deg, #00ff88 0%, #00995e 100%);
+      color: #fff;
+      padding: 80px 0;
+    }
+
+    .value-box {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 40px 25px;
+      border-radius: 15px;
+      transition: all 0.3s ease;
+    }
+
+    .value-box:hover {
+      transform: translateY(-10px);
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .value-box i {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      color: #fff;
+    }
+
+    .value-box h4 {
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    /* Footer */
+    footer {
+      background: #000;
+      color: #aaa;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 0.9rem;
+    }
+
+    footer span {
+      color: #00ff88;
+      font-weight: 600;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="/">Book My Turf</a>
+      <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <i class="fa fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="#" class="nav-link active">About</a></li>
+          <li class="nav-item"><a href="cont" class="nav-link">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section with Background -->
+  <section class="about-hero">
+    <div class="container">
+      <h1>About Us</h1>
+      <p>Your game deserves the perfect turf. Book My Turf helps you find, compare, and book premium sports venues effortlessly.</p>
+    </div>
+  </section>
+
+  <!-- About Content -->
+  <section class="about-content">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <img src="{% static 'images1/bookmyturf.png' %}" alt="Book My Turf">
+        </div>
+        <div class="col-lg-6">
+          <h2>Who We Are</h2>
+          <p>
+            At <strong>Book My Turf</strong>, we’re redefining how sports enthusiasts connect with the best venues around.
+            Our mission is to make turf booking seamless — whether it’s a casual weekend match or a corporate tournament.
+          </p>
+          <p>
+            We bring together advanced technology, real-time availability, and secure payments to deliver an unmatched
+            sports booking experience. With transparency, trust, and convenience at our core, we’re helping players focus
+            on what really matters — the game.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values Section -->
+  <section class="values-section text-center">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-md-3">
+          <div class="value-box">
+            <i class="fa-solid fa-people-group"></i>
+            <h4>Customer First</h4>
+            <p>Our users are at the heart of every decision we make. We prioritize their satisfaction above all.</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="value-box">
+            <i class="fa-solid fa-handshake"></i>
+            <h4>Accountability</h4>
+            <p>We take full ownership of every process and interaction, ensuring trust at every step.</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="value-box">
+            <i class="fa-solid fa-heart"></i>
+            <h4>Respect & Trust</h4>
+            <p>We treat every partner and customer with dignity, building lasting and honest relationships.</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="value-box">
+            <i class="fa-solid fa-trophy"></i>
+            <h4>Excellence</h4>
+            <p>We strive for excellence in every service we provide, ensuring you always get the best.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 <span>Book My Turf</span>. All Rights Reserved.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

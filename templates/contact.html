@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <title>Contact | BookMyTurf</title>
+
+  <link rel="shortcut icon" href="{% static 'images1/logo-black-and-white.png' %}" type="image/png">
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="{% static 'indexx/css/bootstrap.css' %}" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link href="{% static 'indexx/css/font-awesome.min.css' %}" rel="stylesheet" />
+
+  <!-- Custom styles -->
+  <link href="{% static 'indexx/css/style2.css' %}" rel="stylesheet" />
+  <link href="{% static 'indexx/css/responsive.css' %}" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      background: url("{% static 'images1/aaiiiindexxxx.jpg' %}") no-repeat center center/cover;
+      background-attachment: fixed;
+      position: relative;
+    }
+
+    /* Overlay to darken the background */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: -1;
+    }
+
+    .header_section {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 15px 0;
+    }
+
+    .navbar-brand span {
+      color: #00c851;
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .navbar-nav .nav-link {
+      color: #fff !important;
+      font-weight: 500;
+      margin: 0 10px;
+      transition: color 0.3s ease;
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: #00c851 !important;
+    }
+
+    .contact_section {
+      padding: 80px 0;
+    }
+
+    .heading_container h2 {
+      text-align: center;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 50px;
+      position: relative;
+    }
+
+    .heading_container h2::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -15px;
+      width: 80px;
+      height: 4px;
+      background: #00c851;
+      border-radius: 2px;
+    }
+
+    .form_container {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      color: #222;
+    }
+
+    .form_container input,
+    .form_container textarea {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 12px 15px;
+      width: 100%;
+      margin-bottom: 20px;
+      font-size: 15px;
+    }
+
+    .form_container input:focus,
+    .form_container textarea:focus {
+      outline: none;
+      border-color: #00c851;
+      box-shadow: 0 0 0 2px rgba(0, 200, 81, 0.2);
+    }
+
+    .btn_box button {
+      background-color: #00c851;
+      border: none;
+      color: white;
+      font-weight: 600;
+      padding: 12px 30px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+
+    .btn_box button:hover {
+      background-color: #009d40;
+      transform: translateY(-2px);
+    }
+
+    .map_container {
+      height: 100%;
+      min-height: 350px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    #googleMap {
+      width: 100%;
+      height: 100%;
+    }
+
+    footer.footer_section {
+      background: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      text-align: center;
+      padding: 30px 0;
+      font-size: 14px;
+    }
+
+    footer.footer_section a {
+      color: #00c851;
+      text-decoration: none;
+    }
+
+    footer.footer_section a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .form_container {
+        margin-bottom: 30px;
+      }
+    }
+  </style>
+</head>
+
+<body class="sub_page">
+
+  <!-- Header -->
+  <div class="hero_area">
+    <header class="header_section">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg custom_nav-container">
+          <a class="navbar-brand" href="/">
+            <span>Book My Turf</span>
+          </a>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+              <li class="nav-item active"><a class="nav-link" href="contact">Contact <span class="sr-only">(current)</span></a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+  </div>
+
+  <!-- Contact Section -->
+  <section class="contact_section">
+    <div class="container">
+      <div class="heading_container">
+        <h2>Get in Touch</h2>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <div class="form_container">
+            <form method="POST" action=" ">
+              {% csrf_token %}
+              <input type="text" name="n1" placeholder="Your Name" required>
+              <input type="text" name="n2" placeholder="Phone Number" required>
+              <input type="email" name="n3" placeholder="Email Address" required>
+              <input type="text" name="n4" placeholder="Message" required>
+              <div class="btn_box">
+                <button type="submit">Send Message</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="map_container">
+            <div id="googleMap"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer_section">
+    <p>
+      &copy; 2025 BookMyTurf | All Rights Reserved<br>
+      Designed with ❤️ by <a href="#">Your Team</a>
+    </p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="{% static 'indexx/js/jquery-3.4.1.min.js' %}"></script>
+  <script src="{% static 'indexx/js/bootstrap.js' %}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <script src="{% static 'indexx/js/custom.js' %}"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
+
+  <script>
+    function myMap() {
+      var mapProp = {
+        center: new google.maps.LatLng(19.0760, 72.8777),
+        zoom: 12,
+      };
+      var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+    }
+  </script>
+</body>
+	{% for i in messages %}
+						<h4>{{i}}</h4>
+					{% endfor %}
+</html>

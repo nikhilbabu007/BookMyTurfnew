@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zxx">
+{% load static %}
+<head>
+    <link rel="shortcut icon" href="{% static 'images1/logo-black-and-white.png' %}" type="image/png">
+    <title>BookMyTurf Complaint</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="keywords" content="Poly Clinic Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+
+    <!-- Bootstrap CSS -->
+    <link href="{% static 'index/css/bootstrap.css' %}" type="text/css" rel="stylesheet" media="all">
+    <link href="{% static 'index/css/style3user.css' %}" type="text/css" rel="stylesheet" media="all">
+    <link href="{% static 'register/css/style4com.css' %}" rel="stylesheet" type="text/css" media="all">
+    <link href="{% static 'register/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css" media="all">
+
+    <!-- Font Awesome -->
+    <link href="{% static 'index/css/fontawesome-all.min.css' %}" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
+    <!-- Custom Styles for Professional Design and Background Image -->
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            background-image: url('{% static "images/207329881-generative-ai-grass-inside-the-football-stadium.jpg" %}');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .back-link {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 15px;
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .back-link:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .main-agileits {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .complaint-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .sub-head {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        .complaint-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: #34495e;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #bdc3c7;
+            border-radius: 8px;
+            font-size: 16px;
+            background: #ecf0f1;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #3498db;
+            background: #fff;
+            outline: none;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .btn-send {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: #fff;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .btn-send:hover {
+            background: linear-gradient(135deg, #2980b9 0%, #3498db 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .complaint-container {
+                padding: 20px;
+                margin: 20px;
+            }
+            .sub-head {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Back Link -->
+    <a href="addm" class="back-link">&laquo; Back</a>
+
+    <!-- Main Content -->
+    <div class="main-agileits">
+        <div class="complaint-container">
+            <h2 class="sub-head">Submit Reply</h2>
+          <form action="reply"  class="complaint-form">
+    {% csrf_token %}
+    <input name="p1" value="{{u.username}}" type="text" hidden>
+
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input id="name" name="p2" type="text" value="{{name}}" readonly required>
+    </div>
+
+    <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input id="phone" name="p3" type="text" value="{{mobile}}" readonly required>
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" name="p4" type="email" value="{{email}}" readonly required>
+    </div>
+
+
+    <div class="form-group">
+        <label for="feedback">Feedback/Complaint</label>
+        <input id="feedback"  name="p5" type="text" value="{{complaint}}" readonly required>
+
+    </div>
+
+              <div class="form-group">
+        <label for="reply">Reply</label>
+        <textarea id="reply" placeholder="reply here..." name="p6" required></textarea>
+    </div>
+
+    <input type="submit" class="btn-send" onclick="return confirm('send reply?')" value="Send">
+
+
+</form>
+
+        </div>
+    </div>
+</body>
+</html>

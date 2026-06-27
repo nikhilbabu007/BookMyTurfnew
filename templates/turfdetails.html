@@ -1,0 +1,179 @@
+<!DOCTYPE HTML>
+<html>
+{% load static %}
+<head>
+    <link rel="shortcut icon" href="{% static 'images1/logo-black-and-white.png' %}" type="">
+    <title>BookMyTurf</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+
+    <!-- Bootstrap -->
+    <link href="{% static 'dashboard/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{% static 'dashboard/css/style2.css' %}" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="{% static 'dashboard/css/font-awesome.css' %}" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href='//fonts.googleapis.com/css?family=Roboto:700,500,300' rel='stylesheet'>
+    <link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet'>
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Top Left Back Button (Fixed) */
+        .top-back-bar {
+            width: 100%;
+            background: #A5D6A7;
+            padding: 12px 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 2000;
+        }
+
+        .back-btn {
+            color: #333;
+            font-weight: 600;
+            text-decoration: none;
+            background: rgba(255,255,255,0.7);
+            padding: 8px 18px;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        /* Add spacing so content doesn’t hide behind fixed bar */
+        .spacer {
+            height: 60px;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: #A5D6A7;
+            padding: 100px 0 60px;
+            color: #333;
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Card Container */
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 40px 0;
+        }
+
+        .card {
+            flex: 1 1 calc(33.33% - 20px);
+            max-width: 350px;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Image Fit */
+        .card-img-top {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Turf Name Highlight */
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2E7D32;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+            margin-bottom: 10px;
+        }
+
+        .btn-info {
+            background-color: #A5D6A7;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-weight: 500;
+            color: #333;
+            transition: background 0.3s ease;
+        }
+
+        .btn-info:hover {
+            background-color: #81C784;
+            color: #333;
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                flex: 1 1 100%;
+            }
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+            .card-title {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Top Left Back Button -->
+    <div class="top-back-bar">
+        <a href="prof" class="back-btn">← Back</a>
+    </div>
+
+    <!-- Spacer for fixed button -->
+    <div class="spacer"></div>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="container">
+            <h1>AVAILABLE TURFS</h1>
+            <p>Book your favorite turf for an amazing game experience.</p>
+        </div>
+    </div>
+
+    <!-- Turf Cards -->
+    <div class="container">
+        <div class="card-container">
+            {% for i in r %}
+            <div class="card">
+                <img class="card-img-top" src="{{ i.photo.url }}" alt="Turf Image">
+                <div class="card-body">
+                    <h5 class="card-title">{{ i.name }}</h5>
+                    <p class="card-text">Open from {{ i.time }}</p>
+                    <a href="det/{{ i.name }}" class="btn btn-info">View Details</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="{% static 'dashboard/js/bootstrap.min.js' %}"></script>
+
+</body>
+</html>

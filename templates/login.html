@@ -1,0 +1,288 @@
+<!DOCTYPE HTML>
+<html>
+{% load static %}
+<head>
+    <link rel="shortcut icon" href="{% static 'images1/logo-black-and-white.png' %}" type="">
+    <title>LOGIN</title>
+    <!-- Meta-Tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Elite login Form a Responsive Web Template, Bootstrap Web Templates, Flat Web Templates, Android Compatible Web Template, Smartphone Compatible Web Template, Free Webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design">
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!-- //Meta-Tags -->
+    <!-- Stylesheets -->
+    <link href="{% static 'loginn/css/font-awesome.css' %}" rel="stylesheet">
+    <!--// Stylesheets -->
+    <!--fonts-->
+    <link href="//fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <!--//fonts-->
+    <style>
+        /* Football Turf Inspired CSS for the login form */
+    body {
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #fff;
+    overflow-x: hidden;
+    position: relative;
+
+
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url("{% static 'images1/footballturf8.jpg' %}") no-repeat center center fixed;
+    background-size: cover;
+}
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                linear-gradient(90deg, transparent 49%, rgba(255,255,255,0.2) 50%, transparent 51%);
+            z-index: -1;
+        }
+        body::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: rgba(255,255,255,0.5);
+            z-index: -1;
+        }
+        .back-link {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            z-index: 10;
+        }
+        .back-link:hover {
+            color: #ffeb3b;
+        }
+        .login-container {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            padding: 40px;
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .login-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 30% 70%, rgba(255,255,255,0.1) 0%, transparent 40%),
+                linear-gradient(45deg, transparent 48%, rgba(255,255,255,0.2) 49%, rgba(255,255,255,0.2) 51%, transparent 52%);
+            z-index: -1;
+        }
+        .login-container::after {
+            content: '⚽';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.5);
+            z-index: -1;
+        }
+        h1 {
+            margin-bottom: 30px;
+            color: #fff;
+            font-weight: 700;
+            font-size: 2.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+            position: relative;
+        }
+        h1::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: #ffeb3b;
+            border-radius: 2px;
+        }
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #e0e0e0;
+            font-size: 1rem;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            box-sizing: border-box;
+        }
+        input[type="text"]::placeholder, input[type="password"]::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        input[type="text"]:focus, input[type="password"]:focus {
+            border-color: #ffeb3b;
+            box-shadow: 0 0 15px rgba(255, 235, 59, 0.5);
+            outline: none;
+        }
+        .forgot-link {
+            display: block;
+            text-align: right;
+            margin-top: 8px;
+            font-size: 0.9rem;
+            color: #ffeb3b;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .forgot-link:hover {
+            color: #fff;
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-top: 12px;
+            justify-content: flex-start;
+        }
+        .checkbox-group input[type="checkbox"] {
+            margin-right: 10px;
+            accent-color: #ffeb3b;
+        }
+        .checkbox-group label {
+            font-size: 0.9rem;
+            color: #e0e0e0;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #ffeb3b 0%, #ffc107 100%);
+            color: #2e7d32;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 20px;
+            position: relative;
+        }
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(255, 235, 59, 0.4);
+        }
+        .submit-btn::before {
+            content: '⚽';
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+        }
+        .messages {
+            margin-top: 20px;
+            color: #ff5722;
+            font-weight: 500;
+            background: rgba(255, 87, 34, 0.1);
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 87, 34, 0.3);
+        }
+        .copy-wthree {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #ccc;
+        }
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 25px;
+                margin: 20px;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a href="/" class="back-link">&laquo; Back</a>
+    <div class="login-container">
+        <h1>Login</h1>
+        <form action="login.html" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="n1" placeholder="Enter your username" required="" />
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <a href="forgot" class="forgot-link">Forgot password?</a>
+                <input type="password" id="password" name="n2" placeholder="Enter your password" required="" />
+                <div class="checkbox-group">
+                    <input id="showPassword" name="showPassword" type="checkbox" onclick="togglePassword()">
+                    <label for="showPassword">Show password</label>
+                </div>
+            </div>
+            <button type="submit" class="submit-btn">Login</button>
+            {% for i in messages %}
+                <div class="messages">{{ i }}</div>
+            {% endfor %}
+        </form>
+    </div>
+    <!-- //form ends here -->
+    <!--copyright-->
+    <div class="copy-wthree">
+        <!-- Add copyright text if needed -->
+    </div>
+
+    <script>
+        function togglePassword() {
+            var x = document.getElementById("password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
+</body>
+
+</html>
