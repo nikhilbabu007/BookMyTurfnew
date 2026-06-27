@@ -1,9 +1,29 @@
-This is a Django based Turf Booking website 
+FEATURES
 
-Users can search turfs, book slots, make payments and can view and update their profiles
+Django-based Turf Booking System with separate modules for users, turf owners, and administrators.
 
-Turf owners can register their turfs and can manage profile
+User Registration and Login with secure authentication.
 
-Admin controls turf registration and booking details
+Search and Browse Turfs based on location and availability.
 
-Users can also cancel their booking before the deadline
+Book Turf Slots by selecting preferred date and time.
+
+Online Payment Integration for booking confirmation.
+
+Booking Cancellation before the specified cancellation deadline.
+
+User Profile Management to view and update personal information.
+
+Booking History to view current and past bookings.
+
+Turf Owner Registration to list and manage turf details.
+
+Turf Management for owners to add, edit, or remove turf information.
+
+Admin Approval of Turf Registrations before they become available for booking.
+
+Booking Management for administrators to monitor and manage all bookings.
+
+Role-Based Access Control with separate dashboards for users, turf owners, and administrators.
+
+Responsive User Interface for easy access across desktop and mobile devices
