@@ -27,3 +27,13 @@ Booking Management for administrators to monitor and manage all bookings.
 Role-Based Access Control with separate dashboards for users, turf owners, and administrators.
 
 Responsive User Interface for easy access across desktop and mobile devices
+
+TECHNOLOGIES USED
+
+Python, Django, HTML, CSS and SOLite3
+
+RUN using: http://127.0.0.1:8000/
+
+
+
+
