@@ -145,7 +145,7 @@ Monitor Bookings
 
 ### 🛠️ Admin Dashboard
 
-![Admin Dashboard](screenshots/admin_index.png)
+![Admin Dashboard](screenshots/admin_indexx.png)
 
 ### 📊 Admin Booking History
 
