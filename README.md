@@ -91,9 +91,9 @@ User Registration / Login
     Booking Confirmed
           ↓
     View Booking History
-
-
-🏟️ Turf Owner Flow
+```
+### 🏟️ Turf Owner Flow
+```text
 Turf Owner Registration
           ↓
    Submit Turf Details
@@ -103,8 +103,9 @@ Turf Owner Registration
     Turf Becomes Available
           ↓
    Manage Turf & Bookings
-
+```
 🛠️ Administrator Flow
+```text
 Administrator Login
         ↓
 Manage Users
