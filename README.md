@@ -69,4 +69,48 @@ Each role has access to the features and operations relevant to their responsibi
 - Django Authentication
 - Role-Based Access Control
 - Online Payment Integration
+---
 
+## 🔄 Application Workflow
+
+The BookMyTurf platform follows a role-based workflow:
+
+### 👤 User Booking Flow
+
+```text
+User Registration / Login
+          ↓
+     Browse Turfs
+          ↓
+   View Turf Details
+          ↓
+ Select Date & Time Slot
+          ↓
+   Make Online Payment
+          ↓
+    Booking Confirmed
+          ↓
+    View Booking History
+
+
+🏟️ Turf Owner Flow
+Turf Owner Registration
+          ↓
+   Submit Turf Details
+          ↓
+   Admin Review & Approval
+          ↓
+    Turf Becomes Available
+          ↓
+   Manage Turf & Bookings
+
+🛠️ Administrator Flow
+Administrator Login
+        ↓
+Manage Users
+        ↓
+Review Turf Registrations
+        ↓
+Approve / Manage Turfs
+        ↓
+Monitor Bookings
