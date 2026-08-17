@@ -48,5 +48,25 @@ The system provides separate access and dashboards for:
 
 Each role has access to the features and operations relevant to their responsibilities.
 
+---
 
+## 🛠️ Technologies Used
+
+### Backend
+- **Python**
+- **Django**
+
+### Frontend
+- **HTML5**
+- **CSS3**
+- **JavaScript**
+
+### Database
+- **SQLite3**
+
+### Other
+- Django ORM
+- Django Authentication
+- Role-Based Access Control
+- Online Payment Integration
 
