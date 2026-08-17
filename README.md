@@ -115,3 +115,38 @@ Review Turf Registrations
 Approve / Manage Turfs
         ↓
 Monitor Bookings
+---
+
+## 📸 Screenshots
+
+### 🏠 Home Page
+
+![BookMyTurf Home Page](screenshots/home1.png)
+
+### 🏟️ Available Turfs
+
+![Available Turfs](screenshots/available_turfs.png)
+
+### 📋 Turf Details
+
+![Turf Details](screenshots/turf_details.png)
+
+### 📅 Slot Booking
+
+![Slot Booking](screenshots/slot_booking.png)
+
+### 💳 Online Payment
+
+![Online Payment](screenshots/payment.png)
+
+### 👤 User Dashboard
+
+![User Dashboard](screenshots/userindex.png)
+
+### 🛠️ Admin Dashboard
+
+![Admin Dashboard](screenshots/admin_index.png)
+
+### 📊 Admin Booking History
+
+![Admin Booking History](screenshots/admin_view_history.png)
